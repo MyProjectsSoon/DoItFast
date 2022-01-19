@@ -4,6 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bklogin"
     tools:context=".SignInActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="185dp"
+        android:layout_height="162dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="148dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logomain" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="305dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/edtshape"
+        android:drawableLeft="@drawable/envelope"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:paddingRight="5dp"
+        android:textColor="#000000"
+        android:textColorHint="gray"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
