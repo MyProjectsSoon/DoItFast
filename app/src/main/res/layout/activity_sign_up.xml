@@ -7,106 +7,133 @@
     android:background="@drawable/bksingup"
     tools:context=".SignUpActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1.15"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.20"
+        app:srcCompat="@drawable/logomain" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextbackground"
+        android:drawableLeft="@drawable/user"
+        android:fontFamily="@font/robotoregular"
+        android:hint=" Full Name*"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.100000024"
+        app:layout_constraintWidth_percent=".75" />
+
+    <EditText
+        android:id="@+id/etEmail2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextbackground"
+        android:drawableLeft="@drawable/envelope"
+        android:fontFamily="@font/robotoregular"
+        android:hint=" Email*"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etFullName"
+        app:layout_constraintStart_toStartOf="@+id/etFullName"
+        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:layout_constraintVertical_bias="0.02"/>
+
+    <EditText
+        android:id="@+id/etPassword2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextbackground"
+        android:drawableLeft="@drawable/lock"
+        android:fontFamily="@font/robotoregular"
+        android:hint=" Password*"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etEmail2"
+        app:layout_constraintStart_toStartOf="@+id/etEmail2"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail2"
+        app:layout_constraintVertical_bias="0.02" />
+
     <TextView
         android:id="@+id/txtSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/robotobold"
         android:text="Sign In"
         android:textColor="@color/dark_green"
-        android:textSize="12dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/robotoregular"
         android:text="Already have an account?"
-        android:textSize="12dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignup"
+        app:layout_constraintVertical_bias="0.07999998" />
 
-    <EditText
-        android:id="@+id/etPassword2"
-        android:layout_width="284dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edittextbackground"
-        android:ems="10"
-        android:fontFamily="@font/robotoregular"
-        android:hint="     Password*"
-        android:inputType="textPassword"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail2" />
-
-    <EditText
-        android:id="@+id/etEmail2"
-        android:layout_width="284dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:width="284dp"
-        android:height="37dp"
-        android:background="@drawable/edittextbackground"
-        android:ems="10"
-        android:fontFamily="@font/robotoregular"
-        android:hint="      Email*"
-        android:inputType="textEmailAddress"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etFullName" />
 
     <Button
         android:id="@+id/btnSignup"
-        android:layout_width="284dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="176dp"
-        android:width="284dp"
-        android:height="37dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
         android:backgroundTint="@color/dark_green"
         android:fontFamily="@font/robotobold"
+        android:onClick="onSignupClick"
         android:shadowColor="#FFFFFF"
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textSize="12dp"
-        app:cornerRadius="24sp"
+        app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword2"
+        app:layout_constraintStart_toStartOf="@+id/etPassword2"
         app:layout_constraintTop_toBottomOf="@+id/etPassword2"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.02" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="185dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="108dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logomain" />
 
-    <EditText
-        android:id="@+id/etFullName"
-        android:layout_width="284dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/edittextbackground"
-        android:ems="10"
-        android:fontFamily="@font/robotoregular"
-        android:hint="     Full Name*"
-        android:inputType="textPersonName"
-        android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
