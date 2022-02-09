@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bkwelcome"
+    android:orientation="vertical"
     tools:context=".WelcomeActivity">
 
     <Button
@@ -18,7 +19,7 @@
         android:drawableLeft="@drawable/key"
         android:foregroundGravity="center_vertical|center_horizontal"
         android:freezesText="false"
-        android:onClick="TologinPage"
+        android:onClick="onLoginPageClick"
         android:paddingLeft="95dp"
         android:paddingRight="120dp"
         android:text="@string/login"
@@ -39,7 +40,7 @@
         android:layout_marginBottom="208dp"
         android:background="@drawable/btnsignup"
         android:drawableLeft="@drawable/userplus"
-        android:onClick="ToSignupPage"
+        android:onClick="onRegisterPageClick"
         android:paddingLeft="90dp"
         android:paddingRight="100dp"
         android:text="@string/register"
@@ -50,4 +51,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
