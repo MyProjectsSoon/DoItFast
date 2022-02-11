@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Do It Fast</string>
+    <string name="username">Username</string>
+
 </resources>
