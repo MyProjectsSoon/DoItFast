@@ -42,6 +42,7 @@
         android:backgroundTint="@color/dark_green"
         android:fontFamily="@font/robotobold"
         android:onClick="onLoginClick"
+        android:drawableLeft="@drawable/keywhite"
         android:shadowColor="#FFFFFF"
         android:text="Login"
         android:textAllCaps="false"
