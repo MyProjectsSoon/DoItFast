@@ -66,6 +66,14 @@ public class SignInActivity extends AppCompatActivity {
         return false;
     }
 
+    public void onTxtClick(View view)
+    {
+        Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
     public void onLoginClick(View view)
     {
         //Validate input
@@ -87,7 +95,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
                 //go to mainpage
-                Intent intent=new Intent(SignInActivity.this,MainActivity.class);
+                Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
