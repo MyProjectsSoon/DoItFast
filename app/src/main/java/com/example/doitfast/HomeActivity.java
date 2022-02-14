@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
+    //UI
     private ImageView imgExit;
 
     @Override
