@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:layout_margin="10dp" android:orientation="vertical"
         >
-        
+
         <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize">
@@ -43,27 +43,254 @@
             android:fontFamily="@font/robotoregular"
             android:textColor="@color/white"
             android:layout_gravity="center"/>
-        
-        <RelativeLayout
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:rowCount="5">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/light_blue"
+                >
+
+
+
+                <ImageView
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/right_arrow"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/recycle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/renew_eid"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/dark_green"
+                    android:layout_gravity="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/light_blue"
+                >
+
+
+
+                <ImageView
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/right_arrow"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/file"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply_for_visa"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/dark_green"
+                    android:layout_gravity="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/light_blue"
+                >
+
+
+
+                <ImageView
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/right_arrow"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/cash"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fee_payment"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/dark_green"
+                    android:layout_gravity="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/light_blue"
+                >
+
+
+
+                <ImageView
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/right_arrow"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/file"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply_for_an_eid"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/dark_green"
+                    android:layout_gravity="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/light_blue"
+                >
+
+
+
+                <ImageView
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/right_arrow"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginRight="30dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/recycle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/renew_visa"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/dark_green"
+                    android:layout_gravity="center"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="95dp"
+            android:layout_marginTop="10dp"
             android:background="@color/light_blue"
-            android:onClick="onServiceClick"
-            >
+            android:onClick="onServiceClick">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Renew ID"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:fontFamily="@font/robotobold1"
-                android:textSize="30sp"
+                android:text="Renew ID"
                 android:textColor="@color/dark_green"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="30sp" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
-        
     </LinearLayout>
 
 </ScrollView>

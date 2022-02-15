@@ -83,14 +83,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
 
                         <ImageView
                             android:id="@+id/image_1"
                             android:layout_width="291dp"
                             android:layout_height="192dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/faic" />
+                            android:src="@drawable/faic"
+                            android:onClick="onServiceClick"/>
 
                         <TextView
                             android:id="@+id/txv_tp_one"

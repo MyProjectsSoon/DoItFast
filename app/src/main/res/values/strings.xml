@@ -6,5 +6,10 @@
     <string name="moi">Ministry of Interior</string>
     <string name="title_activity_services">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="renew_eid">Renew EID</string>
+    <string name="apply_for_visa">Apply for Visa</string>
+    <string name="fee_payment">Fee Payment</string>
+    <string name="apply_for_an_eid">Apply for an EID</string>
+    <string name="renew_visa">Renew Visa</string>
 
 </resources>
