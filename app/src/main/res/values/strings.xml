@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Do It Fast</string>
     <string name="username">Username</string>
+    <string name="moh">Ministry of Health and Prevention</string>
+    <string name="fiac">Federal Authority for Identity and Citizenship</string>
+    <string name="moi">Ministry of Interior</string>
+    <string name="title_activity_services">ScrollingActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

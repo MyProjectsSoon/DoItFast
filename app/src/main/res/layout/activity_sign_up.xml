@@ -95,6 +95,7 @@
         android:textColor="@color/dark_green"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        android:onClick="onTxtClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/textView3"
