@@ -1,21 +1,19 @@
 package com.example.doitfast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class ServicesActivity extends AppCompatActivity {
+public class TicketActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_services);
+        setContentView(R.layout.activity_ticket);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     //back button
@@ -31,13 +29,5 @@ public class ServicesActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onServiceClick(View view)
-    {
-        Intent intent=new Intent(this,TicketActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
     }
 }

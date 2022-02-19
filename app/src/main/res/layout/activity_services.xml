@@ -62,6 +62,7 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
+                android:onClick="onServiceClick"
                 >
 
 

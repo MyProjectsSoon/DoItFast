@@ -11,5 +11,13 @@
     <string name="fee_payment">Fee Payment</string>
     <string name="apply_for_an_eid">Apply for an EID</string>
     <string name="renew_visa">Renew Visa</string>
+    <string name="ticket_number">Ticket Number</string>
+    <string name="ticketnum">111</string>
+    <string name="get_ticket">Get Ticket</string>
+    <string name="queue_num">20</string>
+    <string name="people_in_queue">People In Queue</string>
+    <string name="minutes">65</string>
+    <string name="min">MIN</string>
+    <string name="waiting_time">Waiting Time</string>
 
 </resources>

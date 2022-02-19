@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bk_ticket"
+    tools:context=".TicketActivity">
+   <!--todo: pass strings from onclick-->
+
+   <TextView
+       android:id="@+id/textView9"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="5dp"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/queue_num"
+       android:textColor="@color/dark_blue"
+       android:textSize="31sp"
+       app:layout_constraintBottom_toBottomOf="@+id/imageView"
+       app:layout_constraintStart_toEndOf="@+id/imageView"
+       app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+   <TextView
+       android:id="@+id/txtTitle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/renew_eid"
+       android:textColor="@color/dark_green"
+       android:textSize="34sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.07999998" />
+
+   <TextView
+       android:id="@+id/txtTicket"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotoregular"
+       android:text="@string/ticket_number"
+       android:textColor="@color/white"
+       android:textSize="24sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+       app:layout_constraintVertical_bias="0.0" />
+
+   <TextView
+       android:id="@+id/textView2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/ticketnum"
+       android:textColor="@color/white"
+       android:textSize="60sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/txtTicket"
+       app:layout_constraintVertical_bias="0.0" />
+
+   <Button
+       android:id="@+id/btnTicket"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:backgroundTint="@color/dark_green"
+       android:text="@string/get_ticket"
+       android:textAllCaps="true"
+       app:cornerRadius="24dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="@+id/txtTitle"
+       app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+       app:layout_constraintVertical_bias="0.417" />
+
+   <ImageView
+       android:id="@+id/imageView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.14"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/btnTicket"
+       app:layout_constraintVertical_bias="0.24000001"
+       app:srcCompat="@drawable/queue"
+       tools:ignore="ContentDescription" />
+
+   <ImageView
+       android:id="@+id/imageView3"
+       android:layout_width="42dp"
+       android:layout_height="42dp"
+       android:layout_marginStart="5dp"
+       android:layout_marginTop="20dp"
+       app:layout_constraintBottom_toBottomOf="@+id/textView6"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toEndOf="@+id/textView6"
+       app:layout_constraintTop_toTopOf="@+id/textView6"
+       app:srcCompat="@drawable/timer"
+       tools:ignore="ContentDescription" />
+
+   <ImageView
+       android:id="@+id/imageView4"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toStartOf="@+id/textView6"
+       app:layout_constraintHorizontal_bias="0.655"
+       app:layout_constraintStart_toEndOf="@+id/imageView"
+       app:layout_constraintTop_toBottomOf="@+id/btnTicket"
+       app:layout_constraintVertical_bias="0.751"
+       tools:ignore="ContentDescription"
+       app:srcCompat="@drawable/cancel" />
+
+   <TextView
+       android:id="@+id/textView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotobold"
+       android:text="@android:string/cancel"
+       android:textColor="@color/dark_green"
+       android:textSize="24sp"
+       app:layout_constraintEnd_toEndOf="@+id/imageView4"
+       app:layout_constraintStart_toStartOf="@+id/imageView4"
+       app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+   <TextView
+       android:id="@+id/textView5"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/people_in_queue"
+       android:textColor="@color/dark_green"
+       android:textSize="18sp"
+       app:layout_constraintEnd_toEndOf="@+id/imageView"
+       app:layout_constraintHorizontal_bias="0.08"
+       app:layout_constraintStart_toStartOf="@+id/imageView"
+       app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+   <TextView
+       android:id="@+id/textView6"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/minutes"
+       android:textColor="@color/dark_blue"
+       android:textSize="31sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.74"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/btnTicket"
+       app:layout_constraintVertical_bias="0.19999999" />
+
+   <TextView
+       android:id="@+id/textView7"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/robotoregular"
+       android:text="@string/min"
+       android:textColor="@color/dark_blue"
+       android:textSize="16sp"
+       app:layout_constraintEnd_toEndOf="@+id/textView6"
+       app:layout_constraintStart_toStartOf="@+id/textView6"
+       app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+   <TextView
+       android:id="@+id/textView8"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="23dp"
+       android:fontFamily="@font/robotobold"
+       android:text="@string/waiting_time"
+       android:textColor="@color/dark_green"
+       android:textSize="18sp"
+       app:layout_constraintEnd_toEndOf="@+id/textView6"
+       app:layout_constraintHorizontal_bias="0.447"
+       app:layout_constraintStart_toStartOf="@+id/textView6"
+       app:layout_constraintTop_toBottomOf="@+id/textView6" />
+</androidx.constraintlayout.widget.ConstraintLayout>
