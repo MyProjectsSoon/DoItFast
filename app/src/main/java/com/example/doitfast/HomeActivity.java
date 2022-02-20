@@ -15,6 +15,11 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView imgExit;
     private TextView userEmail;
 
+    //Titles
+    private String FIAC = "Federal Authority for Identity and Citizenship";
+    private String MOH = "Ministry of Health and Prevention";
+    private String MOI = "Ministry of Interior";
+
 
 
     @Override
@@ -36,10 +41,29 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void onServiceClick(View view)
+    public void onFIACClick(View view)
     {
         Intent intent=new Intent(this,ServicesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message_key", FIAC);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onMOHClick(View view)
+    {
+        Intent intent=new Intent(this,ServicesActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message_key", MOH);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onMOIClick(View view)
+    {
+        Intent intent=new Intent(this,ServicesActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("message_key", MOI);
         startActivity(intent);
         finish();
     }

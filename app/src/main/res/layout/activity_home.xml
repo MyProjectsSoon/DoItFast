@@ -92,7 +92,7 @@
                             android:layout_height="192dp"
                             android:layout_marginTop="10dp"
                             android:src="@drawable/faic"
-                            android:onClick="onServiceClick"/>
+                            android:onClick="onFIACClick"/>
 
                         <TextView
                             android:id="@+id/txv_tp_one"
@@ -134,7 +134,8 @@
                             android:layout_width="291dp"
                             android:layout_height="192dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/moh" />
+                            android:src="@drawable/moh"
+                            android:onClick="onMOHClick"/>
 
                         <TextView
                             android:id="@+id/txv_tp_two"
@@ -173,6 +174,7 @@
                             android:layout_width="291dp"
                             android:layout_height="192dp"
                             android:layout_marginTop="10dp"
+                            android:onClick="onMOIClick"
                             android:src="@drawable/moi" />
 
                         <TextView
