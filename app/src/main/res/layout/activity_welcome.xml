@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bksplash"
+    android:background="@drawable/bkwelcome"
     tools:context=".WelcomeActivity">
 
     <ImageView
@@ -38,7 +38,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_green"
-        android:drawableLeft="@drawable/mykey"
+        android:drawableLeft="@drawable/key"
         android:fontFamily="@font/robotobold"
         android:gravity="center"
         android:onClick="onLoginPageClick"
