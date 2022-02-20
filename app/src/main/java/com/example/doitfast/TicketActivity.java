@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class TicketActivity extends AppCompatActivity {
+
+    private TextView txtTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +19,14 @@ public class TicketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ticket);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //UI
+        txtTitle = findViewById(R.id.txtTitle);
+
+        //Set title
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("message_key");
+        txtTitle.setText(str);
     }
 
     //back button

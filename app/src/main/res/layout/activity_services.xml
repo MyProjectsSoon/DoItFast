@@ -14,17 +14,7 @@
         android:layout_height="wrap_content" android:layout_margin="10dp" android:orientation="vertical"
         >
 
-        <!--<RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_centerVertical="true"/>
-
-        </RelativeLayout>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,13 +26,14 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fiac"
-            android:textSize="18sp"
+            android:layout_gravity="center"
             android:fontFamily="@font/robotoregular"
+            android:text="@string/fiac"
             android:textColor="@color/white"
-            android:layout_gravity="center"/>
+            android:textSize="18sp" />
 
         <GridLayout
             android:layout_width="match_parent"
@@ -62,7 +53,7 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
-                android:onClick="onServiceClick"
+                android:onClick="onRenewIdClick"
                 >
 
 
@@ -85,7 +76,7 @@
                     android:layout_marginLeft="20dp"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/renew_eid"
@@ -106,6 +97,8 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
+                android:onClick="onApplyVisaClick"
+
                 >
 
 
@@ -128,7 +121,7 @@
                     android:layout_marginLeft="20dp"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/apply_for_visa"
@@ -149,6 +142,7 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
+                android:onClick="onFeePaymentClick"
                 >
 
 
@@ -171,7 +165,7 @@
                     android:layout_marginLeft="20dp"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fee_payment"
@@ -192,6 +186,7 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
+                android:onClick="onApplyEIDClick"
                 >
 
 
@@ -214,7 +209,7 @@
                     android:layout_marginLeft="20dp"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/apply_for_an_eid"
@@ -235,6 +230,7 @@
                 app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardBackgroundColor="@color/light_blue"
+                android:onClick="onRenewVisaClick"
                 >
 
 
@@ -257,7 +253,7 @@
                     android:layout_marginLeft="20dp"/>
 
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/renew_visa"

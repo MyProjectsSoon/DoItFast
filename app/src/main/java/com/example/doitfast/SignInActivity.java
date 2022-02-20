@@ -64,7 +64,7 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
 
 
-            Toast.makeText(this, "Welcome to Park Ticket!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
         }
 //        else
 //        {

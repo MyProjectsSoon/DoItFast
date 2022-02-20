@@ -100,7 +100,7 @@
         android:scaleY="0.8"
         android:padding="0dp"
         android:scrollbarSize="4dp"
-        android:text="Remember Password"
+        android:text="Keep me signed in"
         android:textColor="@color/dark_grey"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,14 +114,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotoregular"
-        android:text="Forgot Password?"
+        android:text="Forgot password?"
         android:textColor="@color/dark_grey"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/cbPassword"
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/cbPassword"
-         />
+        app:layout_constraintTop_toTopOf="@+id/cbPassword" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
