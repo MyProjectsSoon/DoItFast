@@ -72,23 +72,49 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     //validation user input in sign up
+
+    private Boolean validateEmail() {
+        String val = etEmail.getText().toString();
+        String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})+$";
+        if (val.isEmpty()) {
+            etEmail.setError("Field cannot be empty");
+            return false;
+        } else if (!val.matches(emailPattern)) {
+            etEmail.setError("Invalid etEmail address");
+            return false;
+        } else {
+            etEmail.setError(null);
+            return true;
+        }
+    }
+
     private boolean Validate()
     {
+        //for username
         if(TextUtils.isEmpty(etUserName.getText().toString()))
         {
-            etUserName.setError("Input Required");
+            etUserName.setError("Field cannot be empty");
             return true;
         }
 
-        if(TextUtils.isEmpty(etEmail.getText().toString()))
+        //for email
+        String email = etEmail.getText().toString();
+        if(TextUtils.isEmpty(email))
         {
-            etEmail.setError("Input Required");
+            etEmail.setError("Field cannot be empty");
+            return true;
+        }
+        String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})+$";
+        if (!email.matches(emailPattern))
+        {
+            etEmail.setError("Invalid Email address \nex:(ex@ex.com)");
             return true;
         }
 
+        //for password
         if(TextUtils.isEmpty(etPassword.getText().toString()))
         {
-            etPassword.setError("Input Required");
+            etPassword.setError("Field cannot be empty");
             return true;
         }
         return false;
@@ -101,28 +127,32 @@ public class SignUpActivity extends AppCompatActivity {
         {
             alert.sendMsg("Error", "Fix the errors on the screen", SignUpActivity.this);
         }
+        else
+        {
+            //get UI
+            String email=etEmail.getText().toString();
+            String password=etPassword.getText().toString();
+
+            auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    //Toast and prograssbar
+                    String message="Account Created Succesfully";
+                    Toast.makeText(SignUpActivity.this,message,Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    String message="Register Failed"+e.getMessage();
+                    Toast.makeText(SignUpActivity.this,message,Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
 
 
 
-        //get UI
-        String email=etEmail.getText().toString();
-        String password=etPassword.getText().toString();
 
-        auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                //Toast and prograssbar
-                String message="Account Created Succesfully";
-                Toast.makeText(SignUpActivity.this,message,Toast.LENGTH_SHORT).show();
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                String message="Register Failed"+e.getMessage();
-                Toast.makeText(SignUpActivity.this,message,Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 }

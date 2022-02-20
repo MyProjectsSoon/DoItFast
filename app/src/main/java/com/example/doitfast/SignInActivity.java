@@ -97,10 +97,8 @@ public class SignInActivity extends AppCompatActivity {
     //validation user input in SignIn
     private boolean Validate()
     {
-        //TextUtils.isEmpty(etEmail.getText().toString())
 
-        String em = etEmail.getText().toString();
-        if(em.isEmpty())
+        if(TextUtils.isEmpty(etEmail.getText().toString()))
         {
             etEmail.setError("Input Required");
             return true;
@@ -129,51 +127,55 @@ public class SignInActivity extends AppCompatActivity {
         {
             alert.sendMsg("Error", "Fix the errors on the screen", SignInActivity.this);
         }
+        else
+        {
+            //get user input
+            String email=etEmail.getText().toString();
+            String password=etPassword.getText().toString();
+            boolean boolIsChecked = cbPassword.isChecked();
+
+            auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+
+                    //Toast and prograssbar
+                    String message="Sign In Successful";
+                    Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
 
 
 
-        //get user input
-        String email=etEmail.getText().toString();
-        String password=etPassword.getText().toString();
-        boolean boolIsChecked = cbPassword.isChecked();
+                    if(boolIsChecked)
+                    {
 
-        auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
+                        SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = mypref.edit();
 
-                //Toast and prograssbar
-                String message="Sign In Successful";
-                Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
+                        editor.putString("UserEmail",email);
+                        editor.putString("UserPass",password);
+                        editor.commit();
+                    }
 
-
-
-                if(boolIsChecked)
-                {
-
-                    SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mypref.edit();
-
-                    editor.putString("UserEmail",email);
-                    editor.putString("UserPass",password);
-                    editor.commit();
+                    //go to main page
+                    Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("UserEmail",email);
+                    startActivity(intent);
+                    finish();
                 }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
 
-                //go to main page
-                Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("UserEmail",email);
-                startActivity(intent);
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                    String message="Sign In Failed"+e.getMessage();
+                    Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
 
-                String message="Sign In Failed"+e.getMessage();
-                Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
-            }
-        });
+
+
+
 
 
 
