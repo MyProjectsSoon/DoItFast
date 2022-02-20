@@ -17,18 +17,34 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
 
     //Reference for the UI elements
     private EditText etUserName , etEmail , etPassword;
 
+    //Reference to the Firebase realtime database
+    private FirebaseDatabase database;
+
+    //Reference to a specific node in the database
+    private DatabaseReference reference;
 
     //Reference to the Firebase realtime database
     private FirebaseAuth auth;
 
     //create object Alter
     Alert alert = new Alert();
+
+    //Variable to count number of object in database
+    long maxid = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +54,32 @@ public class SignUpActivity extends AppCompatActivity {
         etUserName = findViewById(R.id.etUserName);
         etEmail = findViewById(R.id.etEmail2);
         etPassword = findViewById(R.id.etPassword2);
+
+        //Get the database object and a reference to the members collection
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("members");
+
+        //to generate id number of members
+        //1- count number of members in database and put it in variable maxid
+        //2- when create object put id as maxid +1
+
+
+        //here step 1 count number of members in database and put it in variable maxid
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    maxid = (dataSnapshot.getChildrenCount());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //Get firebase auth object
         auth = FirebaseAuth.getInstance();
@@ -72,22 +114,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     //validation user input in sign up
-
-    private Boolean validateEmail() {
-        String val = etEmail.getText().toString();
-        String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})+$";
-        if (val.isEmpty()) {
-            etEmail.setError("Field cannot be empty");
-            return false;
-        } else if (!val.matches(emailPattern)) {
-            etEmail.setError("Invalid etEmail address");
-            return false;
-        } else {
-            etEmail.setError(null);
-            return true;
-        }
-    }
-
     private boolean Validate()
     {
         //for username
@@ -129,9 +155,66 @@ public class SignUpActivity extends AppCompatActivity {
         }
         else
         {
-            //get UI
+            //get user input
+            String username = etUserName.getText().toString();
             String email=etEmail.getText().toString();
             String password=etPassword.getText().toString();
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    //to sing up follow many step
+                    //1- get all emails in database and put it in array list
+                    //2- compare email text with each email in array list
+                    //3- if don't find same email in database application  will sign up
+
+                    //here step 1 to get all emails
+                    List<String> emailMembers = new ArrayList<>();
+                    for (DataSnapshot node : snapshot.getChildren()) {
+                        Member member = node.getValue(Member.class);
+                        emailMembers.add(member.getEmail());
+                    }
+
+                    //here step 2 to compare
+                    boolean newRegister = true;
+                    for (int n = 0; n < emailMembers.size(); n++) {
+                        String e = emailMembers.get(n);
+                        if (email.equals(e)) {
+                            newRegister = false;
+                            break;
+                        }
+                    }
+
+
+                    // here application will sign up if don't find same email in database
+                    if (!newRegister) {
+                        String message = "a member with same email already exsits";
+                        Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
+                    } else {
+                        //here step 2 to create object
+                        final long id = maxid + 1;
+                        final Member member = new Member(id, username, email, password);
+
+                        reference.child(String.valueOf(id)).setValue(member).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                etUserName.setText("");
+                                etEmail.setText("");
+                                etPassword.setText("");
+                                String message = "Member Addded sucessfully";
+                                Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override

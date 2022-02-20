@@ -22,6 +22,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -30,9 +35,18 @@ public class SignInActivity extends AppCompatActivity {
     private EditText etEmail , etPassword;
     private CheckBox cbPassword;
 
+    //Reference to the Firebase realtime database
+    private FirebaseDatabase database;
 
+    //Reference to a specific node in the database
+    private DatabaseReference reference;
     // Reference to Firebase Auth
     private FirebaseAuth auth;
+
+    //Variable
+    private int[] id = new int[1];
+    private String[] user = new String[1];
+
 
     //Create object Alert
     Alert alert = new Alert();
@@ -47,11 +61,17 @@ public class SignInActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         cbPassword = findViewById(R.id.cbPassword);
 
+        //Get the database object and a reference to the members collection
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("members");
+
         //Get firebase auth object
         auth = FirebaseAuth.getInstance();
 
         // Get reference
         SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
+        int usrId = mypref.getInt("id",0);
+        String usrName = mypref.getString("UserName",null);
         String usrEmail = mypref.getString("UserEmail",null);
 
         if(usrEmail != null)
@@ -60,16 +80,15 @@ public class SignInActivity extends AppCompatActivity {
 
             //send to home
             Intent intent = new Intent(this,HomeActivity.class);
+            intent.putExtra("id",usrId);
+            intent.putExtra("UserName",usrName);
             intent.putExtra("UserEmail",usrEmail);
             startActivity(intent);
 
 
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
         }
-//        else
-//        {
-//            setContentView(R.layout.activity_sign_in);
-//        }
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -134,6 +153,27 @@ public class SignInActivity extends AppCompatActivity {
             String password=etPassword.getText().toString();
             boolean boolIsChecked = cbPassword.isChecked();
 
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot node : snapshot.getChildren()) {
+                        Member member = node.getValue(Member.class);
+                        //emailMembers.add(member.getEmail());
+                        if (email.equals(member.getEmail())) {
+                            id[0] = (int) member.getId();
+                            user[0] = member.getUsername();
+                            break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
             auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
@@ -142,7 +182,8 @@ public class SignInActivity extends AppCompatActivity {
                     String message="Sign In Successful";
                     Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
 
-
+                    String username = SignInActivity.this.user[0];
+                    int userid = id[0];
 
                     if(boolIsChecked)
                     {
@@ -150,15 +191,22 @@ public class SignInActivity extends AppCompatActivity {
                         SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = mypref.edit();
 
+                        editor.putInt("id",userid);
+                        editor.putString("UserName",username);
                         editor.putString("UserEmail",email);
                         editor.putString("UserPass",password);
                         editor.commit();
                     }
 
+
+
+
                     //go to main page
                     Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("UserEmail",email);
+                    intent.putExtra("UserName", username);
+                    intent.putExtra("id", userid);
                     startActivity(intent);
                     finish();
                 }

@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //UI
     private ImageView imgExit;
-    private TextView userEmail;
+    private TextView userName;
 
     //Titles
     private String FIAC = "Federal Authority for Identity and Citizenship";
@@ -29,11 +29,12 @@ public class HomeActivity extends AppCompatActivity {
 
         imgExit = findViewById(R.id.imgExit);
 
-        userEmail = findViewById(R.id.txv_username);
+        userName = findViewById(R.id.txv_username);
         // receive from SignIn
         Intent intent = getIntent();
         String email = intent.getStringExtra("UserEmail");
-        userEmail.setText(email);
+        String username = intent.getStringExtra("UserName");
+        userName.setText(username);
 
 
 
