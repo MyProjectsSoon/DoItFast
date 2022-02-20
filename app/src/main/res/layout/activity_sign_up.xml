@@ -35,13 +35,13 @@
         app:layout_constraintGuide_percent="0.75" />
 
     <EditText
-        android:id="@+id/etFullName"
+        android:id="@+id/etUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edittextbackground"
         android:drawableLeft="@drawable/user"
         android:fontFamily="@font/robotoregular"
-        android:hint=" Full Name*"
+        android:hint=" User Name*"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="12sp"
@@ -64,9 +64,9 @@
         android:padding="15dp"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etFullName"
-        app:layout_constraintStart_toStartOf="@+id/etFullName"
-        app:layout_constraintTop_toBottomOf="@+id/etFullName"
+        app:layout_constraintEnd_toEndOf="@+id/etUserName"
+        app:layout_constraintStart_toStartOf="@+id/etUserName"
+        app:layout_constraintTop_toBottomOf="@+id/etUserName"
         app:layout_constraintVertical_bias="0.02"/>
 
     <EditText
@@ -91,11 +91,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotobold"
+        android:onClick="signin"
         android:text="Sign In"
         android:textColor="@color/dark_green"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        android:onClick="onTxtClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toEndOf="@+id/textView3"

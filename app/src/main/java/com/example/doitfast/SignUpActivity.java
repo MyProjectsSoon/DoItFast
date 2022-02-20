@@ -20,26 +20,26 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText etFullName;
-    private EditText etEmail;
-    private EditText etPassword;
-    private Button btnSignUp;
-    private TextView txtSignin;
+    //Reference for the UI elements
+    private EditText etUserName , etEmail , etPassword;
 
-    //Firebase
+
+    //Reference to the Firebase realtime database
     private FirebaseAuth auth;
+
+    //create object Alter
+    Alert alert = new Alert();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        etFullName = findViewById(R.id.etFullName);
+        etUserName = findViewById(R.id.etUserName);
         etEmail = findViewById(R.id.etEmail2);
         etPassword = findViewById(R.id.etPassword2);
-        btnSignUp = findViewById(R.id.btnSignup);
-        txtSignin = findViewById(R.id.txtSignin);
 
+        //Get firebase auth object
         auth = FirebaseAuth.getInstance();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,19 +64,19 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     //navigate to sign in
-    public void onTxtClick(View view)
-    {
-        Intent intent=new Intent(SignUpActivity.this,SignInActivity.class);
+    public void signin(View view) {
+        Intent intent = new Intent(this, SignInActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
 
+    //validation user input in sign up
     private boolean Validate()
     {
-        if(TextUtils.isEmpty(etFullName.getText().toString()))
+        if(TextUtils.isEmpty(etUserName.getText().toString()))
         {
-            etFullName.setError("Input Required");
+            etUserName.setError("Input Required");
             return true;
         }
 
@@ -96,10 +96,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void onSignupClick(View view)
     {
-        //check if empty
+        //check validation of input user in sign up
         if(Validate())
         {
-            return;
+            alert.sendMsg("Error", "Fix the errors on the screen", SignUpActivity.this);
         }
 
 

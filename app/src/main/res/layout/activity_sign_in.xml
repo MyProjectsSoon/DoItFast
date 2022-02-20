@@ -147,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotobold"
-        android:onClick="onTxtClick"
+        android:onClick="toSignup"
         android:text="Sign Up"
         android:textColor="@color/dark_green"
         android:textSize="12sp"

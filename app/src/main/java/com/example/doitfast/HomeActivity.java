@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,9 @@ public class HomeActivity extends AppCompatActivity {
 
     //UI
     private ImageView imgExit;
+    private TextView userEmail;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,17 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         imgExit = findViewById(R.id.imgExit);
+
+        userEmail = findViewById(R.id.txv_username);
+        // receive from SignIn
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("UserEmail");
+        userEmail.setText(email);
+
+
+
+
+
     }
 
     public void onServiceClick(View view)

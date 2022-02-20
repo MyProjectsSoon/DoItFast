@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -24,16 +26,16 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignInActivity extends AppCompatActivity {
 
 
-    private EditText etEmail;
-    private EditText etPassword;
-    private Button btnLogin;
+    // References to UI elements
+    private EditText etEmail , etPassword;
     private CheckBox cbPassword;
-    private TextView txtSignUp;
 
-    //Firebase
+
+    // Reference to Firebase Auth
     private FirebaseAuth auth;
 
-
+    //Create object Alert
+    Alert alert = new Alert();
 
 
     @Override
@@ -43,11 +45,31 @@ public class SignInActivity extends AppCompatActivity {
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
         cbPassword = findViewById(R.id.cbPassword);
-        txtSignUp = findViewById(R.id.txtSignUp);
 
+        //Get firebase auth object
         auth = FirebaseAuth.getInstance();
+
+        // Get reference
+        SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
+        String usrEmail = mypref.getString("UserEmail",null);
+
+        if(usrEmail != null)
+        {
+
+
+            //send to home
+            Intent intent = new Intent(this,HomeActivity.class);
+            intent.putExtra("UserEmail",usrEmail);
+            startActivity(intent);
+
+
+            Toast.makeText(this, "Welcome to Park Ticket!", Toast.LENGTH_SHORT).show();
+        }
+//        else
+//        {
+//            setContentView(R.layout.activity_sign_in);
+//        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -72,11 +94,13 @@ public class SignInActivity extends AppCompatActivity {
         return true;
     }
 
+    //validation user input in SignIn
     private boolean Validate()
     {
+        //TextUtils.isEmpty(etEmail.getText().toString())
 
-
-        if(TextUtils.isEmpty(etEmail.getText().toString()))
+        String em = etEmail.getText().toString();
+        if(em.isEmpty())
         {
             etEmail.setError("Input Required");
             return true;
@@ -90,7 +114,7 @@ public class SignInActivity extends AppCompatActivity {
         return false;
     }
 
-    public void onTxtClick(View view)
+    public void toSignup(View view)
     {
         Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -101,13 +125,17 @@ public class SignInActivity extends AppCompatActivity {
     public void onLoginClick(View view)
     {
         //Validate input
-        if(Validate()){return;}
+        if(Validate())
+        {
+            alert.sendMsg("Error", "Fix the errors on the screen", SignInActivity.this);
+        }
 
 
 
-        //get UI
+        //get user input
         String email=etEmail.getText().toString();
         String password=etPassword.getText().toString();
+        boolean boolIsChecked = cbPassword.isChecked();
 
         auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
@@ -118,9 +146,22 @@ public class SignInActivity extends AppCompatActivity {
                 Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
 
 
-                //go to mainpage
+
+                if(boolIsChecked)
+                {
+
+                    SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mypref.edit();
+
+                    editor.putString("UserEmail",email);
+                    editor.putString("UserPass",password);
+                    editor.commit();
+                }
+
+                //go to main page
                 Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserEmail",email);
                 startActivity(intent);
                 finish();
             }
@@ -133,6 +174,8 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
