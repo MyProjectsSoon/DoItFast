@@ -69,4 +69,11 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onExitClick(View view)
+    {
+        Intent intent = new Intent(HomeActivity.this,SignInActivity.class);
+        intent.putExtra("LOGOUT","logout");
+        startActivity(intent);
+        finish();
+    }
 }

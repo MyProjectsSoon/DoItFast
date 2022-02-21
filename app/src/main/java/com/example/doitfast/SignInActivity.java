@@ -65,26 +65,35 @@ public class SignInActivity extends AppCompatActivity {
         //Get firebase auth object
         auth = FirebaseAuth.getInstance();
 
-        // Get reference
-        SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
-        int usrId = mypref.getInt("id",0);
-        String usrName = mypref.getString("UserName",null);
-        String usrEmail = mypref.getString("UserEmail",null);
+        // receive from home
+        Intent intent1 = getIntent();
+        String logout = intent1.getStringExtra("LOGOUT");
 
-        if(usrEmail != null)
+
+        if(logout == null)
         {
+            // Get reference for Share Preference
+            SharedPreferences mypref = getSharedPreferences("MyPref" , Context.MODE_PRIVATE);
+            int usrId = mypref.getInt("id",0);
+            String usrName = mypref.getString("UserName",null);
+            String usrEmail = mypref.getString("UserEmail",null);
+
+            if(usrEmail != null)
+            {
 
 
-            //send to home
-            Intent intent = new Intent(this,HomeActivity.class);
-            intent.putExtra("id",usrId);
-            intent.putExtra("UserName",usrName);
-            intent.putExtra("UserEmail",usrEmail);
-            startActivity(intent);
+                //send to home
+                Intent intent = new Intent(this,HomeActivity.class);
+                intent.putExtra("id",usrId);
+                intent.putExtra("UserName",usrName);
+                intent.putExtra("UserEmail",usrEmail);
+                startActivity(intent);
 
 
-            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            }
         }
+
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
