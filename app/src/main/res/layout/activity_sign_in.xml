@@ -54,7 +54,7 @@
         app:layout_constraintVertical_bias="0.02" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etEmailSend"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edittextbackground"
@@ -85,9 +85,9 @@
         android:padding="15dp"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="@+id/etEmailSend"
+        app:layout_constraintStart_toStartOf="@+id/etEmailSend"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailSend"
         app:layout_constraintVertical_bias="0.02" />
 
     <CheckBox
@@ -114,6 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotoregular"
+        android:onClick="toForgetPassword"
         android:text="Forgot password?"
         android:textColor="@color/dark_grey"
         android:textSize="12sp"

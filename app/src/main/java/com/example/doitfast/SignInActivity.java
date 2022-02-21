@@ -3,7 +3,6 @@ package com.example.doitfast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,10 +11,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -57,7 +54,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        etEmail = findViewById(R.id.etEmail);
+        etEmail = findViewById(R.id.etEmailSend);
         etPassword = findViewById(R.id.etPassword);
         cbPassword = findViewById(R.id.cbPassword);
 
@@ -134,6 +131,14 @@ public class SignInActivity extends AppCompatActivity {
     public void toSignup(View view)
     {
         Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
+    public void toForgetPassword(View view)
+    {
+        Intent intent=new Intent(SignInActivity.this,ForgetPassword.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
