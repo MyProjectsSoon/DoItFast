@@ -14,7 +14,7 @@
        android:layout_height="wrap_content"
        android:layout_marginStart="5dp"
        android:fontFamily="@font/robotobold"
-       android:text="@string/queue_num"
+       android:text=""
        android:textColor="@color/dark_blue"
        android:textSize="31sp"
        app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -54,7 +54,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:fontFamily="@font/robotobold"
-       android:text="@string/ticketnum"
+       android:text=""
        android:textColor="@color/dark_green"
        android:textSize="60sp"
        app:layout_constraintBottom_toBottomOf="parent"
@@ -73,12 +73,11 @@
        android:textAllCaps="true"
        app:cornerRadius="24dp"
        app:layout_constraintBottom_toBottomOf="parent"
-
-       app:layout_constraintEnd_toEndOf="@+id/tvTicketTitle"
-       app:layout_constraintHorizontal_bias="1.0"
-       app:layout_constraintStart_toStartOf="@+id/tvTicketTitle"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/tvTicketTitle"
-       app:layout_constraintVertical_bias="0.417" />
+       app:layout_constraintVertical_bias="0.417"
+       app:layout_constraintWidth_percent=".75" />
 
    <ImageView
        android:id="@+id/imageView"
@@ -97,7 +96,7 @@
        android:id="@+id/imageView3"
        android:layout_width="42dp"
        android:layout_height="42dp"
-       android:layout_marginStart="5dp"
+       android:layout_marginStart="12dp"
        android:layout_marginTop="20dp"
        app:layout_constraintBottom_toBottomOf="@+id/tvMinutes"
        app:layout_constraintEnd_toEndOf="parent"
@@ -113,12 +112,12 @@
        android:layout_height="wrap_content"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toStartOf="@+id/tvMinutes"
-       app:layout_constraintHorizontal_bias="0.655"
+       app:layout_constraintHorizontal_bias="0.52"
        app:layout_constraintStart_toEndOf="@+id/imageView"
        app:layout_constraintTop_toBottomOf="@+id/btnTicket"
-       app:layout_constraintVertical_bias="0.751"
-       tools:ignore="ContentDescription"
-       app:srcCompat="@drawable/cancel" />
+       app:layout_constraintVertical_bias="0.706"
+       app:srcCompat="@drawable/cancel"
+       tools:ignore="ContentDescription" />
 
    <TextView
        android:id="@+id/textView"
@@ -151,7 +150,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:fontFamily="@font/robotobold"
-       android:text="@string/minutes"
+       android:text=""
        android:textColor="@color/dark_blue"
        android:textSize="31sp"
        app:layout_constraintBottom_toBottomOf="parent"
@@ -186,4 +185,17 @@
        app:layout_constraintHorizontal_bias="0.447"
        app:layout_constraintStart_toStartOf="@+id/tvMinutes"
        app:layout_constraintTop_toBottomOf="@+id/tvMinutes" />
+
+   <ImageView
+       android:id="@+id/ivQR"
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       app:layout_constraintBottom_toTopOf="@+id/tvMinutes"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/tvTicket"
+       tools:srcCompat="@tools:sample/avatars"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

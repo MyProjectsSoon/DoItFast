@@ -38,52 +38,52 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:alignmentMode="alignMargins"
             android:columnCount="1"
             android:columnOrderPreserved="false"
             android:rowCount="5">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv1"
                 android:layout_width="wrap_content"
                 android:layout_height="95dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="@color/light_blue"
                 android:onClick="onRenewIdClick"
-                >
-
+                app:cardBackgroundColor="@color/light_blue"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp">
 
 
                 <ImageView
                     android:layout_width="41dp"
                     android:layout_height="41dp"
-                    android:src="@drawable/right_arrow"
                     android:layout_gravity="end"
                     android:layout_marginTop="27dp"
                     android:layout_marginRight="30dp"
+                    android:src="@drawable/right_arrow"
 
                     />
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/recycle"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="3dp"
+                    android:src="@drawable/recycle" />
 
 
                 <TextView
+                    android:id="@+id/tvService1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/renew_eid"
-                    android:textSize="25sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/robotobold"
+                    android:text="@string/renew_eid"
                     android:textColor="@color/dark_green"
-                    android:layout_gravity="center"/>
+                    android:textSize="20sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -118,17 +118,18 @@
                     android:layout_height="70dp"
                     android:src="@drawable/file"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="3dp"/>
 
 
                 <TextView
+                    android:id="@+id/tvService2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/apply_for_visa"
-                    android:textSize="25sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/robotobold"
+                    android:text="@string/apply_for_visa"
                     android:textColor="@color/dark_green"
-                    android:layout_gravity="center"/>
+                    android:textSize="20sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -162,17 +163,18 @@
                     android:layout_height="70dp"
                     android:src="@drawable/cash"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="3dp"/>
 
 
                 <TextView
+                    android:id="@+id/tvService3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fee_payment"
-                    android:textSize="25sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/robotobold"
+                    android:text="@string/fee_payment"
                     android:textColor="@color/dark_green"
-                    android:layout_gravity="center"/>
+                    android:textSize="20sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -206,17 +208,18 @@
                     android:layout_height="70dp"
                     android:src="@drawable/file"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="3dp"/>
 
 
                 <TextView
+                    android:id="@+id/tvService4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/apply_for_an_eid"
-                    android:textSize="25sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/robotobold"
+                    android:text="@string/apply_for_an_eid"
                     android:textColor="@color/dark_green"
-                    android:layout_gravity="center"/>
+                    android:textSize="20sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -250,17 +253,18 @@
                     android:layout_height="70dp"
                     android:src="@drawable/recycle"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="3dp"/>
 
 
                 <TextView
+                    android:id="@+id/tvService5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/renew_visa"
-                    android:textSize="25sp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/robotobold"
+                    android:text="@string/renew_visa"
                     android:textColor="@color/dark_green"
-                    android:layout_gravity="center"/>
+                    android:textSize="20sp" />
 
 
             </androidx.cardview.widget.CardView>

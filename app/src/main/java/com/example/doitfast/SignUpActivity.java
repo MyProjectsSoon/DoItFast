@@ -187,7 +187,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
 
 
-                    // here application will sign up if don't find same email in database
+                    // here application will sign up if it doesn't find same email in database
                     if (!newRegister) {
                         String message = "a member with same email already exsits";
                         Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();
