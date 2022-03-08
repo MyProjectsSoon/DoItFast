@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.doitfast.classes.Ticket;
+import com.example.doitfast.model.Ticket;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,8 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.WriterException;
-
-import java.util.List;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -62,6 +60,10 @@ public class TicketActivity extends AppCompatActivity {
 
     //object
     private Ticket t;
+
+    //Intents
+    private String title;
+
 
 
     @Override
@@ -101,14 +103,10 @@ public class TicketActivity extends AppCompatActivity {
 
         //create ticket
         t = new Ticket(count,username,title);
-        System.out.println(t.getQueue());
+
 
         getFromFirebase(new OnDataReceiveCallback(){
             public void onDataReceived(String queueCounter){
-
-
-                /*int d = Integer.parseInt(queueTicket);
-                String displayTicket = String.valueOf(d);*/
 
                 if(t.getDisplayQueue()==0)
                 {
@@ -116,7 +114,6 @@ public class TicketActivity extends AppCompatActivity {
                 }
 
                 //set text
-
                 tvTicket.setText(String.valueOf(t.getQueue()));
                 tvQueue.setText(String.valueOf(t.getDisplayQueue()));
                 tvMinutes.setText(String.valueOf(t.getDisplayQueue()));
@@ -178,15 +175,45 @@ public class TicketActivity extends AppCompatActivity {
     public void onTicketClick(View view)
     {
 
-        //Add ticket to Firebase
+        //count=t.getQueue();
+
+        //get intent
+        Intent intent = getIntent();
+        title = intent.getStringExtra("message_key");
+        //checking service with intent
+        /*ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int myCount=1;
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String tick = snapshot.child("service").getValue().toString();
+                                if(title.equals(tick))
+                                {
+                                    myCount++;
+                                    System.out.println("TRUE");
+                                    t.setQueue(myCount);
+                                    t.setDisplayQueue(myCount);
+                                }
+                                else
+                                {
+                                    System.out.println("FALSE");
+                                }
+
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });*/
+
+        //setting ticket display
         count=t.getQueue();
-        count++;
-        t.setQueue(count);
-        t.setDisplayQueue(count);
+
         t.subtractDisplayQueue();
 
-        /*String key = ref.push().getKey();*/
-        ref.child(String.valueOf(count)).setValue(t).addOnSuccessListener(new OnSuccessListener<Void>() {
+        //Add ticket
+        ref.child(String.valueOf(String.valueOf(count))).setValue(t).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 
@@ -242,6 +269,34 @@ public class TicketActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void onCancelClick(View view){
+        count = t.getQueue();
+        ref.child(String.valueOf(count)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    ref.child(String.valueOf(count)).setValue(null);
+                    Toast.makeText(TicketActivity.this, "Your position in the queue has been cleared", Toast.LENGTH_SHORT).show();
+                    btnTicket.setVisibility(View.VISIBLE);
+                    btnTicket.setEnabled(true);
+                    tvText.setVisibility(View.INVISIBLE);
+                    tvTicket.setVisibility(View.INVISIBLE);
+                    ivQR.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

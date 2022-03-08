@@ -192,7 +192,7 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(AuthResult authResult) {
 
-                    //Toast and prograssbar
+                    //Toast
                     String message="Sign In Successful";
                     Toast.makeText(SignInActivity.this,message,Toast.LENGTH_SHORT).show();
 
@@ -212,10 +212,7 @@ public class SignInActivity extends AppCompatActivity {
                         editor.commit();
                     }
 
-
-
-
-                    //go to main page
+                    //go to home page
                     Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("UserEmail",email);

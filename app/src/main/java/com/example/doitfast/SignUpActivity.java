@@ -164,19 +164,19 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    //to sing up follow many step
-                    //1- get all emails in database and put it in array list
+                    //to sign up
+                    //1- get all emails in database and put it in an array list
                     //2- compare email text with each email in array list
-                    //3- if don't find same email in database application  will sign up
+                    //3- if you don't find the same email in the database, application  will sign up
 
-                    //here step 1 to get all emails
+                    //step 1 to get all emails
                     List<String> emailMembers = new ArrayList<>();
                     for (DataSnapshot node : snapshot.getChildren()) {
                         Member member = node.getValue(Member.class);
                         emailMembers.add(member.getEmail());
                     }
 
-                    //here step 2 to compare
+                    //step 2 to compare
                     boolean newRegister = true;
                     for (int n = 0; n < emailMembers.size(); n++) {
                         String e = emailMembers.get(n);
@@ -187,7 +187,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
 
 
-                    // here application will sign up if it doesn't find same email in database
+                    // here the application will sign up if it doesn't find same the email in database
                     if (!newRegister) {
                         String message = "a member with same email already exsits";
                         Toast.makeText(SignUpActivity.this, message, Toast.LENGTH_SHORT).show();

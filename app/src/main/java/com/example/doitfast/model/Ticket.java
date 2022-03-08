@@ -1,6 +1,7 @@
-package com.example.doitfast.classes;
+package com.example.doitfast.model;
 
 public class Ticket {
+
 
     private int queue;
     private int displayQueue;
