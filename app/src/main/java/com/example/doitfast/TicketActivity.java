@@ -52,11 +52,6 @@ public class TicketActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
 
-    //Variable to count objects in Firebase
-    private int count;
-
-    //execute once
-    private boolean isExecuted = false;
 
     //object
     private Ticket t;
@@ -64,7 +59,10 @@ public class TicketActivity extends AppCompatActivity {
     //Intents
     private String title;
 
+    //global variables
+    private static int myCount;
 
+    private static String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,19 +97,20 @@ public class TicketActivity extends AppCompatActivity {
         //Firebase
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("queues");
-
+        System.out.println(title);
 
         //create ticket
-        t = new Ticket(count,username,title);
+        t = new Ticket(0,username,title);
+
 
 
         getFromFirebase(new OnDataReceiveCallback(){
             public void onDataReceived(String queueCounter){
 
-                if(t.getDisplayQueue()==0)
+                /*if(t.getDisplayQueue()==0)
                 {
                     t.setDisplayQueue(t.getQueue());
-                }
+                }*/
 
                 //set text
                 tvTicket.setText(String.valueOf(t.getQueue()));
@@ -138,13 +137,22 @@ public class TicketActivity extends AppCompatActivity {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ){
 
-                //get count
-                int qCounter = (int) dataSnapshot.getChildrenCount();
-                t.setQueue(qCounter);
-                String queueCounter = String.valueOf(qCounter);
+                Intent intent = getIntent();
+                title = intent.getStringExtra("message_key");
+
+                myCount=0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String tick = snapshot.child("service").getValue().toString();
+                    if(title.equals(tick))
+                    {
+                        myCount++;
+                    }}
+
+                t.setQueue(myCount);
+                t.setDisplayQueue(myCount);
 
 
-                callback.onDataReceived(queueCounter);
+                callback.onDataReceived(String.valueOf(myCount));
             }
 
             @Override
@@ -175,45 +183,14 @@ public class TicketActivity extends AppCompatActivity {
     public void onTicketClick(View view)
     {
 
-        //count=t.getQueue();
-
-        //get intent
-        Intent intent = getIntent();
-        title = intent.getStringExtra("message_key");
-        //checking service with intent
-        /*ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        int myCount=1;
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String tick = snapshot.child("service").getValue().toString();
-                                if(title.equals(tick))
-                                {
-                                    myCount++;
-                                    System.out.println("TRUE");
-                                    t.setQueue(myCount);
-                                    t.setDisplayQueue(myCount);
-                                }
-                                else
-                                {
-                                    System.out.println("FALSE");
-                                }
-
-
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });*/
-
         //setting ticket display
-        count=t.getQueue();
-
+        t.addQueue();
+        t.setDisplayQueue(myCount);
         t.subtractDisplayQueue();
 
         //Add ticket
-        ref.child(String.valueOf(String.valueOf(count))).setValue(t).addOnSuccessListener(new OnSuccessListener<Void>() {
+        key = ref.push().getKey();
+        ref.child(key).setValue(t).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 
@@ -255,7 +232,7 @@ public class TicketActivity extends AppCompatActivity {
 
         // setting this dimensions inside our qr code
         // encoder to generate our qr code.
-        QRGEncoder qrgEncoder = new QRGEncoder(String.valueOf(count), null, QRGContents.Type.TEXT, dimen);
+        QRGEncoder qrgEncoder = new QRGEncoder(key, null, QRGContents.Type.TEXT, dimen);
         try {
             // getting our qrcode in the form of bitmap.
             bitmap = qrgEncoder.encodeAsBitmap();
@@ -272,13 +249,14 @@ public class TicketActivity extends AppCompatActivity {
     }
 
     public void onCancelClick(View view){
-        count = t.getQueue();
-        ref.child(String.valueOf(count)).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        System.out.println(key);
+        ref.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists())
                 {
-                    ref.child(String.valueOf(count)).setValue(null);
+                    ref.child(key).setValue(null);
                     Toast.makeText(TicketActivity.this, "Your position in the queue has been cleared", Toast.LENGTH_SHORT).show();
                     btnTicket.setVisibility(View.VISIBLE);
                     btnTicket.setEnabled(true);

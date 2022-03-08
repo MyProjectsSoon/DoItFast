@@ -28,6 +28,8 @@ public class Ticket {
         this.displayQueue--;
     }
 
+    public void addQueue() {this.queue++;}
+
     public void setDisplayQueue(int displayQueue) {
         this.displayQueue = displayQueue;
     }
