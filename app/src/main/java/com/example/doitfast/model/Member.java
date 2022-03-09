@@ -1,4 +1,4 @@
-package com.example.doitfast;
+package com.example.doitfast.model;
 
 public class Member {
 

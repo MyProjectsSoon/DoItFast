@@ -4,7 +4,6 @@ public class Ticket {
 
 
     private int queue;
-    private int displayQueue;
     private String name;
     private String service;
 
@@ -16,23 +15,11 @@ public class Ticket {
         this.queue = queue;
         this.name = name;
         this.service = service;
-        this.displayQueue=queue;
     }
 
-    public int getDisplayQueue() {
-        return displayQueue;
-    }
 
-    public void subtractDisplayQueue()
-    {
-        this.displayQueue--;
-    }
 
     public void addQueue() {this.queue++;}
-
-    public void setDisplayQueue(int displayQueue) {
-        this.displayQueue = displayQueue;
-    }
 
     public int getQueue() {
         return queue;

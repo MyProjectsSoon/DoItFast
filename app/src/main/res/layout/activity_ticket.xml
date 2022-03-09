@@ -96,11 +96,7 @@
        android:id="@+id/imageView3"
        android:layout_width="42dp"
        android:layout_height="42dp"
-       android:layout_marginStart="12dp"
-       android:layout_marginTop="20dp"
-       app:layout_constraintBottom_toBottomOf="@+id/tvMinutes"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.0"
+       android:layout_marginTop="6dp"
        app:layout_constraintStart_toEndOf="@+id/tvMinutes"
        app:layout_constraintTop_toTopOf="@+id/tvMinutes"
        app:srcCompat="@drawable/timer"
@@ -112,9 +108,9 @@
        android:layout_height="wrap_content"
        android:onClick="onCancelClick"
        app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toStartOf="@+id/tvMinutes"
-       app:layout_constraintHorizontal_bias="0.52"
-       app:layout_constraintStart_toEndOf="@+id/imageView"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintHorizontal_bias="0.50"
+       app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/btnTicket"
        app:layout_constraintVertical_bias="0.706"
        app:srcCompat="@drawable/cancel"
@@ -195,8 +191,7 @@
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/tvTicket"
-       tools:srcCompat="@tools:sample/avatars"
-        />
+       tools:srcCompat="@tools:sample/avatars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

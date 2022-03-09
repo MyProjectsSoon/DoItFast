@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int SPLASH_SCREEN_TIMEOUT = 2000;
+    public static int SPLASH_SCREEN_TIMEOUT = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

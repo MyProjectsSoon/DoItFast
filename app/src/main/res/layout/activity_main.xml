@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logomain" />
+        app:srcCompat="@drawable/logomain"
+        android:contentDescription="TODO" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:alpha="0.6"
         android:fontFamily="@font/robotobold"
-        android:text="Welcome to a Faster Future"
+        android:text="@string/welcome_to_a_faster_future"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"

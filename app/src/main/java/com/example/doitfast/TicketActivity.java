@@ -61,6 +61,8 @@ public class TicketActivity extends AppCompatActivity {
 
     //global variables
     private static int myCount;
+    private static int displayCount;
+
 
     private static String key;
 
@@ -105,17 +107,12 @@ public class TicketActivity extends AppCompatActivity {
 
 
         getFromFirebase(new OnDataReceiveCallback(){
-            public void onDataReceived(String queueCounter){
-
-                /*if(t.getDisplayQueue()==0)
-                {
-                    t.setDisplayQueue(t.getQueue());
-                }*/
+            public void onDataReceived(int queueCounter){
 
                 //set text
-                tvTicket.setText(String.valueOf(t.getQueue()));
-                tvQueue.setText(String.valueOf(t.getDisplayQueue()));
-                tvMinutes.setText(String.valueOf(t.getDisplayQueue()));
+                tvTicket.setText(String.valueOf(queueCounter));
+                tvQueue.setText(String.valueOf(queueCounter));
+                tvMinutes.setText(String.valueOf(queueCounter));
 
 
             }
@@ -129,7 +126,7 @@ public class TicketActivity extends AppCompatActivity {
 
 
     public interface OnDataReceiveCallback {
-        void onDataReceived(String ticket);
+        void onDataReceived(int ticket);
     }
 
     private void getFromFirebase(OnDataReceiveCallback callback){
@@ -141,6 +138,7 @@ public class TicketActivity extends AppCompatActivity {
                 title = intent.getStringExtra("message_key");
 
                 myCount=0;
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String tick = snapshot.child("service").getValue().toString();
                     if(title.equals(tick))
@@ -149,10 +147,9 @@ public class TicketActivity extends AppCompatActivity {
                     }}
 
                 t.setQueue(myCount);
-                t.setDisplayQueue(myCount);
 
 
-                callback.onDataReceived(String.valueOf(myCount));
+                callback.onDataReceived(myCount);
             }
 
             @Override
@@ -184,9 +181,6 @@ public class TicketActivity extends AppCompatActivity {
     {
 
         //setting ticket display
-        t.addQueue();
-        t.setDisplayQueue(myCount);
-        t.subtractDisplayQueue();
 
         //Add ticket
         key = ref.push().getKey();
@@ -198,7 +192,7 @@ public class TicketActivity extends AppCompatActivity {
         });
 
         //notify user
-        Toast.makeText(this, "Ticket booked successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Ticket booked successfully", Toast.LENGTH_SHORT).show();
 
         //Visibility of buttons
         btnTicket.setVisibility(View.INVISIBLE);
