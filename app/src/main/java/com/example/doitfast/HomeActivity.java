@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -58,12 +59,27 @@ public class HomeActivity extends AppCompatActivity {
         String username = intent.getStringExtra("UserName");
         userName.setText(username);
 
-        //send intent
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
 
+    }
 
+    //back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent=new Intent(this,SplitActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void onFIACClick(View view)

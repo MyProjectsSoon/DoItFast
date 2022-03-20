@@ -84,7 +84,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
                 //send to home
-                Intent intent = new Intent(this,HomeActivity.class);
+                Intent intent = new Intent(this,SplitActivity.class);
                 intent.putExtra("id",usrId);
                 intent.putExtra("UserName",usrName);
                 intent.putExtra("UserEmail",usrEmail);
@@ -214,7 +214,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
 
                     //go to home page
-                    Intent intent=new Intent(SignInActivity.this,HomeActivity.class);
+                    Intent intent=new Intent(SignInActivity.this,SplitActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("UserEmail",email);
                     intent.putExtra("UserName", username);

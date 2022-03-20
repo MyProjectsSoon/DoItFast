@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bksplit"
+    tools:context=".SplitActivity">
+
+    <TextView
+        android:id="@+id/tvQueues"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/box"
+        android:onClick="onQueueClick"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".75" />
+
+    <TextView
+        android:id="@+id/tvParking"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/box"
+        android:onClick="onParkingClick"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintWidth_percent=".75" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobold"
+        android:text="@string/what_do_you_want_to_book"
+        android:textColor="@color/dark_green"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotolight"
+        android:text="Queues"
+        android:textColor="@color/white"
+        android:textSize="29sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvQueues"
+        app:layout_constraintEnd_toEndOf="@+id/tvQueues"
+        app:layout_constraintStart_toStartOf="@+id/tvQueues"
+        app:layout_constraintTop_toTopOf="@+id/tvQueues"
+        app:layout_constraintVertical_bias=".001" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotolight"
+        android:text="Parking"
+        android:textColor="@color/white"
+        app:layout_constraintVertical_bias=".001"
+    android:textSize="29sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvParking"
+        app:layout_constraintEnd_toEndOf="@+id/tvParking"
+        app:layout_constraintStart_toStartOf="@+id/tvParking"
+        app:layout_constraintTop_toTopOf="@+id/tvParking" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tvQueues"
+        app:layout_constraintEnd_toEndOf="@+id/tvQueues"
+        app:layout_constraintStart_toStartOf="@+id/tvQueues"
+        app:layout_constraintTop_toTopOf="@+id/tvQueues"
+        app:layout_constraintVertical_bias="1"
+        app:srcCompat="@drawable/queue2" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tvParking"
+        app:layout_constraintEnd_toEndOf="@+id/tvParking"
+        app:layout_constraintStart_toStartOf="@+id/tvParking"
+        app:layout_constraintTop_toTopOf="@+id/tvParking"
+        app:layout_constraintVertical_bias="1"
+        app:srcCompat="@drawable/parkedcar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
