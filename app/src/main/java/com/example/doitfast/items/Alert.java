@@ -1,4 +1,4 @@
-package com.example.doitfast;
+package com.example.doitfast.items;
 
 import android.content.DialogInterface;
 

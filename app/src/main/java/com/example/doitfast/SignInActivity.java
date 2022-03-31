@@ -15,6 +15,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.doitfast.items.Alert;
+import com.example.doitfast.items.ForgetPassword;
 import com.example.doitfast.model.Member;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -148,7 +150,7 @@ public class SignInActivity extends AppCompatActivity {
 
     public void toForgetPassword(View view)
     {
-        Intent intent=new Intent(SignInActivity.this,ForgetPassword.class);
+        Intent intent=new Intent(SignInActivity.this, ForgetPassword.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

@@ -12,9 +12,10 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoItFast">
-        <activity android:name=".ParkingActivity"></activity>
+        <activity android:name=".BookingActivity"></activity>
+        <activity android:name=".ParkingActivity" />
         <activity android:name=".SplitActivity" />
-        <activity android:name=".ForgetPassword" />
+        <activity android:name=".items.ForgetPassword" />
         <activity android:name=".TicketActivity" />
         <activity android:name=".ServicesActivity" />
         <activity android:name=".HomeActivity" />

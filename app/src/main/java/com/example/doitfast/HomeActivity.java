@@ -60,6 +60,8 @@ public class HomeActivity extends AppCompatActivity {
         userName.setText(username);
 
 
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -84,11 +86,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onFIACClick(View view)
     {
-        Intent intent=new Intent(this,ServicesActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = IntentSplit();
+
+        //queue
         intent.putExtra("message_key", FIAC);
-
-
         intent.putExtra("txt1", RE);
         intent.putExtra("txt2",AVE);
         intent.putExtra("txt3", FP);
@@ -96,14 +97,20 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("txt5", RV);
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
+        //parking
+        intent.putExtra("company title",FIAC);
+        intent.putExtra("working hours","Mon - Sun   7:00 AM - 3:00 PM");
+
+
+
         startActivity(intent);
         finish();
     }
 
     public void onMOHClick(View view)
     {
-        Intent intent=new Intent(this,ServicesActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = IntentSplit();
+
         intent.putExtra("message_key", MOH);
 
         intent.putExtra("txt1", RD);
@@ -113,6 +120,9 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("txt5", IC);
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
+        //parking
+        intent.putExtra("company title",MOH);
+        intent.putExtra("working hours","Mon - Thu   8:00 AM - 3:00 PM");
 
         startActivity(intent);
         finish();
@@ -120,8 +130,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onMOIClick(View view)
     {
-        Intent intent=new Intent(this,ServicesActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = IntentSplit();
+
         intent.putExtra("message_key", MOI);
         intent.putExtra("txt1", TFP);
         intent.putExtra("txt2",IDL);
@@ -130,7 +140,9 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("txt5", FCR);
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
-
+        //parking
+        intent.putExtra("company title",MOI);
+        intent.putExtra("working hours","Mon - Thu   7:30 AM - 3:00 PM");
 
         startActivity(intent);
         finish();
@@ -142,5 +154,28 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("LOGOUT","logout");
         startActivity(intent);
         finish();
+    }
+
+    public Intent IntentSplit()
+    {
+        Intent intentSplit = getIntent();
+        String option = intentSplit.getStringExtra("Parking");
+
+        System.out.println(option);
+
+        if(option.equals("parking"))
+        {
+            intentSplit = new Intent(this, BookingActivity.class);
+        }
+        else
+        {
+            intentSplit = new Intent(this, ServicesActivity.class);
+        }
+
+
+
+        intentSplit.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return intentSplit;
+
     }
 }

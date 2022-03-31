@@ -1,4 +1,4 @@
-package com.example.doitfast;
+package com.example.doitfast.items;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.doitfast.HomeActivity;
+import com.example.doitfast.R;
+import com.example.doitfast.SignUpActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,7 +43,7 @@ public class ForgetPassword extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent=new Intent(this,HomeActivity.class);
+                Intent intent=new Intent(this, HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
@@ -69,7 +72,7 @@ public class ForgetPassword extends AppCompatActivity {
 
     public void toSignup(View view)
     {
-        Intent intent=new Intent(ForgetPassword.this,SignUpActivity.class);
+        Intent intent=new Intent(ForgetPassword.this, SignUpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

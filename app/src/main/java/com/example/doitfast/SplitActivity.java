@@ -27,10 +27,14 @@ public class SplitActivity extends AppCompatActivity {
         Intent intent=new Intent(this,HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        //push username
         Intent intent2 = getIntent();
         String username = intent2.getStringExtra("UserName");
-
         intent.putExtra("UserName", username);
+
+        //push queue
+        String queue = "queue";
+        intent.putExtra("queue", queue);
 
         startActivity(intent);
         finish();
@@ -38,8 +42,18 @@ public class SplitActivity extends AppCompatActivity {
 
     public void onParkingClick(View v)
     {
-        Intent intent=new Intent(this,ParkingActivity.class);
+        Intent intent=new Intent(this,HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        //push username
+        Intent intent2 = getIntent();
+        String username = intent2.getStringExtra("UserName");
+        intent.putExtra("UserName", username);
+
+        //push parking
+        String parking = "parking";
+        intent.putExtra("Parking", parking);
+
         startActivity(intent);
         finish();
     }
