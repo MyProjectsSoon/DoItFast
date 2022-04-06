@@ -98,9 +98,10 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
         //parking
+        int image = R.drawable.faic;
         intent.putExtra("company title",FIAC);
         intent.putExtra("working hours","Mon - Sun   7:00 AM - 3:00 PM");
-
+        intent.putExtra("image",image);
 
 
         startActivity(intent);
@@ -121,8 +122,11 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
         //parking
+        int image = R.drawable.moh;
         intent.putExtra("company title",MOH);
         intent.putExtra("working hours","Mon - Thu   8:00 AM - 3:00 PM");
+        intent.putExtra("image",image);
+
 
         startActivity(intent);
         finish();
@@ -141,8 +145,10 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("UserName", intent.getStringExtra("UserName"));
 
         //parking
+        int image = R.drawable.moi;
         intent.putExtra("company title",MOI);
         intent.putExtra("working hours","Mon - Thu   7:30 AM - 3:00 PM");
+        intent.putExtra("image",image);
 
         startActivity(intent);
         finish();
@@ -161,7 +167,6 @@ public class HomeActivity extends AppCompatActivity {
         Intent intentSplit = getIntent();
         String option = intentSplit.getStringExtra("Parking");
 
-        System.out.println(option);
 
         if(option.equals("parking"))
         {

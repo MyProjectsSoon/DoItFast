@@ -33,8 +33,8 @@ public class SplitActivity extends AppCompatActivity {
         intent.putExtra("UserName", username);
 
         //push queue
-        String queue = "queue";
-        intent.putExtra("queue", queue);
+        String parking = "queue";
+        intent.putExtra("Parking", parking);
 
         startActivity(intent);
         finish();
