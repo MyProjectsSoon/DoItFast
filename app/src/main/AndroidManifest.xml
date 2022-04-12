@@ -12,7 +12,8 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoItFast">
-        <activity android:name=".BookingActivity"></activity>
+        <activity android:name=".ParkingAcitivity"></activity>
+        <activity android:name=".BookingActivity" />
         <activity android:name=".ParkingActivity" />
         <activity android:name=".SplitActivity" />
         <activity android:name=".items.ForgetPassword" />

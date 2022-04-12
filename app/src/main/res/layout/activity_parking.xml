@@ -4,6 +4,413 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_green"
     tools:context=".ParkingActivity">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/boxparking"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"
+        app:layout_constraintWidth_percent=".3" />
+
+    <TextView
+        android:id="@+id/tvCapacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobold"
+        android:text="@string/_10_50"
+        android:textColor="@color/dark_green"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002">
+
+        <RadioButton
+            android:id="@+id/first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/radio_selector2"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/a"
+            android:textColor="@color/dark_green"
+            android:textSize="28sp" />
+
+        <RadioButton
+
+            android:id="@+id/second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/radio_selector2"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/b"
+            android:textColor="@color/dark_green"
+            android:textSize="28sp" />
+
+        <RadioButton
+            android:id="@+id/third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/radio_selector2"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:fontFamily="@font/robotoregular"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/c"
+            android:textColor="@color/dark_green"
+            android:textSize="28sp" />
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.60"
+        app:srcCompat="@drawable/lineleft" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.60"
+        app:srcCompat="@drawable/lineright" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/robotobold"
+        android:text="@string/select_your_parking_spot"
+        android:textColor="@color/dark_blue"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.20" />
+
+    <Button
+        android:id="@+id/btnParking"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-1"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-2"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-3"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking2"
+
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-4"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking3"
+
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-5"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking4"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-6"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking5"
+
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking8"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking6"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-8"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking7"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <!--other buttons-->
+
+
+    <Button
+        android:id="@+id/btnParking9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking10"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking11"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking9"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking12"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking10"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking13"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking11"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking13"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking14"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking12"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking14"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking15"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking13"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnParking16"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking14"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <Button
+        android:id="@+id/btnParking16"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="A-7"
+        android:textColor="@color/dark_green"
+        android:textSize="12sp"
+        app:cornerRadius="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking15"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        app:layout_constraintWidth_percent=".15" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.61"
+        app:srcCompat="@drawable/linecenter" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

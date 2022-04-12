@@ -148,5 +148,13 @@ public class BookingActivity extends AppCompatActivity {
         }
     }
 
+    public void onConfirmClick(View view)
+    {
+        Intent intent=new Intent(this,ParkingActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+
 }
 
