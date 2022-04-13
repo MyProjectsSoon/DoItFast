@@ -105,13 +105,16 @@ public class BookingActivity extends AppCompatActivity {
         dateTimeDialogFragment.startAtCalendarView();
         dateTimeDialogFragment.set24HoursMode(false);
         dateTimeDialogFragment.setHighlightAMPMSelection(false);
-        dateTimeDialogFragment.setMinimumDateTime(new GregorianCalendar().getTime());
-        System.out.println(new GregorianCalendar().getTime());
+
+        //minimum date
+      /*  dateTimeDialogFragment.setMinimumDateTime(new GregorianCalendar().getTime());
+        System.out.println(new GregorianCalendar().getTime());*/
+
         final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm", java.util.Locale.getDefault());
 
 
 
-        // Set listener
+        // Set datetime listener
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {
