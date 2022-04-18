@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_source">
+        <item>AbuDhabi</item>
+        <item>Dubai</item>
+        <item>Sharjah</item>
+        <item>Ajman</item>
+        <item>Um Al Quwain</item>
+        <item>RAK</item>
+        <item>Fujairah</item>
+
+    </string-array>
+
+    <string-array name="spinner_category">
+        <item>Motorcycle</item>
+        <item>Government</item>
+        <item>Private</item>
+        <item>Public Transportation</item>
+        <item>Diplomat</item>
+    </string-array>
+
+    <string-array name="spinner_code">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>G</item>
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+</resources>

@@ -56,6 +56,14 @@ public class ParkingActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void onParkingClick(View view)
+    {
+        Intent intent=new Intent(this,VechileDetails.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
 }
 
 
