@@ -204,7 +204,7 @@
 
     <Button
         android:id="@+id/btnConfirm2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_green"
         android:onClick="onConfirmClick"
@@ -213,7 +213,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="0.75"
+        app:layout_constraintWidth_percent=".4" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

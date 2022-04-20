@@ -12,7 +12,9 @@
         android:screenOrientation="nosensor"
         android:supportsRtl="true"
         android:theme="@style/Theme.DoItFast">
-        <activity android:name=".VechileDetails"></activity>
+        <activity android:name=".InvoiceActivity"/>
+        <activity android:name=".CardDetails" />
+        <activity android:name=".VechileDetails" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".ParkingActivity" />
         <activity android:name=".SplitActivity" />

@@ -28,5 +28,25 @@
     <string name="c">C</string>
     <string name="a">A</string>
     <string name="select_your_parking_spot">Select your parking spot</string>
+    <string name="invoice">Invoice</string>
+    <string name="invoice_no_123456">Invoice No.: #123456</string>
+    <string name="username_ahmed">Username: ahmed</string>
+    <string name="date_1_1_2022">Date: 1/1/2022</string>
+    <string name="end_time_3_30_pm">End time: 3:30 PM</string>
+    <string name="car_plate_shj_904">Car plate: SHJ - 904</string>
+    <string name="parking_no_a_16">Parking No.: A-16</string>
+    <string name="amount_paid_20_aed">Amount paid: 20 AED</string>
+    <string name="card_details">Card Details</string>
+    <string name="card_number">CARD NUMBER</string>
+    <string name="full_name">FULL NAME</string>
+    <string name="cvc">CVC</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="pay">pay</string>
+    <string name="working_hours">Working hours</string>
+    <string name="when_are_you_arriving">When are you arriving?</string>
+    <string name="pick_a_time_and_date">pick a time and date</string>
+    <string name="for_how_long_are_you_staying">For how long are you staying?</string>
+    <string name="confirm">confirm</string>
+
 
 </resources>

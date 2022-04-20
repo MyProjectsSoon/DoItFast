@@ -45,7 +45,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintWidth_percent=".85"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+         />
 
     <TextView
         android:id="@+id/tvCompany"
@@ -68,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotobold"
-        android:text="Working hours"
+        android:text="@string/working_hours"
         android:textColor="@color/dark_green"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotobold"
-        android:text="When are you arriving?"
+        android:text="@string/when_are_you_arriving"
         android:textColor="@color/dark_green"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onDateClick"
-        android:text="pick a time and date"
+        android:text="@string/pick_a_time_and_date"
         android:backgroundTint="@color/dark_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/robotobold"
-        android:text="For how long are you staying?"
+        android:text="@string/for_how_long_are_you_staying"
         android:textColor="@color/dark_green"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -178,16 +179,18 @@
 
     <Button
         android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_green"
         android:onClick="onConfirmClick"
-        android:text="confirm"
+        android:text="@string/confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.96"
+        app:layout_constraintWidth_percent=".4" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

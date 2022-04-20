@@ -133,9 +133,9 @@ public class VechileDetails extends AppCompatActivity {
     //confirm button
     public void onConfirmClick(View view)
     {
-       /* Intent intent=new Intent(this,ParkingActivity.class);
+       Intent intent=new Intent(this,CardDetails.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();*/
+        finish();
     }
 }
