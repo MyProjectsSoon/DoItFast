@@ -155,6 +155,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-2"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -171,6 +172,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-3"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -178,8 +180,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnParking4"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/btnParking2"
 
+        app:layout_constraintTop_toBottomOf="@+id/btnParking2"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
@@ -188,6 +190,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-4"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -195,8 +198,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnParking5"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/btnParking3"
 
+        app:layout_constraintTop_toBottomOf="@+id/btnParking3"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
@@ -205,6 +208,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-5"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -221,6 +225,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-6"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -228,8 +233,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnParking7"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/btnParking5"
 
+        app:layout_constraintTop_toBottomOf="@+id/btnParking5"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
@@ -238,6 +243,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-7"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -254,6 +260,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-8"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -273,6 +280,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-9"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -289,6 +297,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-10"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -297,8 +306,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking9"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -306,6 +315,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-11"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -314,8 +324,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking10"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -323,6 +333,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-12"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -331,8 +342,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking11"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -340,6 +351,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-13"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -348,8 +360,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking12"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -357,6 +369,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-14"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -365,8 +378,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking13"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -374,6 +387,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-15"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -382,8 +396,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking14"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <Button
@@ -391,6 +405,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
+        android:onClick="onParkingClick"
         android:text="A-16"
         android:textColor="@color/dark_green"
         android:textSize="10sp"
@@ -399,8 +414,8 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/btnParking15"
-        app:layout_constraintVertical_chainStyle="spread"
 
+        app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
     <ImageView

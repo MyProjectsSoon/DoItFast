@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Parking {
 
-    private int parking_code;
+    private String parking_code;
     private Date arrive;
     private int hours;
     private float price;
@@ -18,18 +18,32 @@ public class Parking {
         this.price = price;
     }
 
-    public Parking(int parking_code, Date arrive, int hours, float price) {
+    public Parking(String parking_code, Date arrive, int hours, float price) {
         this.parking_code = parking_code;
         this.arrive = arrive;
         this.hours = hours;
         this.price = price;
     }
+//    public Parking(int parking_code, Date arrive, int hours, float price) {
+//        this.parking_code = parking_code;
+//        this.arrive = arrive;
+//        this.hours = hours;
+//        this.price = price;
+//    }
+//
+//    public int getParking_code() {
+//        return parking_code;
+//    }
+//
+//    public void setParking_code(int parking_code) {
+//        this.parking_code = parking_code;
+//    }
 
-    public int getParking_code() {
+    public String getParking_code() {
         return parking_code;
     }
 
-    public void setParking_code(int parking_code) {
+    public void setParking_code(String parking_code) {
         this.parking_code = parking_code;
     }
 

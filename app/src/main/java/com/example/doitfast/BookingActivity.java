@@ -36,11 +36,11 @@ public class BookingActivity extends AppCompatActivity {
     private ImageView ivCompany;
     private SwitchDateTimeDialogFragment dateTimeDialogFragment;
 
-    //Reference to the Firebase realtime database
-    private FirebaseDatabase database;
-
-    //Reference to a specific node in the database
-    private DatabaseReference reference;
+//    //Reference to the Firebase realtime database
+//    private FirebaseDatabase database;
+//
+//    //Reference to a specific node in the database
+//    private DatabaseReference reference;
 
 
     //info parking
@@ -60,9 +60,9 @@ public class BookingActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         ivCompany = findViewById(R.id.ivCompany);
 
-        //Get the database object and a reference to the members collection
-        database = FirebaseDatabase.getInstance();
-        reference = database.getReference("parking");
+//        //Get the database object and a reference to the members collection
+//        database = FirebaseDatabase.getInstance();
+//        reference = database.getReference("parking");
 
 
 
@@ -172,21 +172,28 @@ public class BookingActivity extends AppCompatActivity {
 
     public void onConfirmClick(View view)
     {
-        final Parking parking = new Parking(arrive,hours,price);
+//        final Parking parking = new Parking(arrive,hours,price);
+//
+//        String key = reference.push().getKey();
+//        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//
+//                String message = "Parking Addded sucessfully";
+//                Toast.makeText(BookingActivity.this, message, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
-        String key = reference.push().getKey();
-        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-                String message = "Parking Addded sucessfully";
-                Toast.makeText(BookingActivity.this, message, Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
         Intent intent=new Intent(this,ParkingActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        //send info booking to parking activity
+        intent.putExtra("arrive",arrive);
+        intent.putExtra("hours",hours);
+        intent.putExtra("price",price);
+
         startActivity(intent);
         finish();
     }

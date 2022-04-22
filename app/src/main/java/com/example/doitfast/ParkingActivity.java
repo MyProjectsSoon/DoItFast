@@ -8,6 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.example.doitfast.model.Parking;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Date;
 
 public class ParkingActivity extends AppCompatActivity {
 
@@ -16,10 +24,19 @@ public class ParkingActivity extends AppCompatActivity {
     private Button btncode9,btncode10,btncode11,btncode12;
     private Button btncode13,btncode14,btncode15,btncode16;
 
+    //Reference to the Firebase realtime database
+    private FirebaseDatabase database;
+
+    //Reference to a specific node in the database
+    private DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking);
+
+        //Get the database object and a reference to the members collection
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("parking");
 
         //1-4
         btncode1 = findViewById(R.id.btnParking1);
@@ -75,7 +92,7 @@ public class ParkingActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.first:
                 if (checked)
-                    System.out.println("1");
+                    System.out.println("Block A");
                     //1-4
                     btncode1.setText("A-1");
                     btncode2.setText("A-2");
@@ -102,7 +119,7 @@ public class ParkingActivity extends AppCompatActivity {
                 break;
             case R.id.second:
                 if (checked)
-                    System.out.println("2");
+                    System.out.println("Block B");
                     //1-4
                     btncode1.setText("B-1");
                     btncode2.setText("B-2");
@@ -129,7 +146,7 @@ public class ParkingActivity extends AppCompatActivity {
                 break;
             case R.id.third:
                 if (checked)
-                    System.out.println("3");
+                    System.out.println("Block C");
                     //1-4
                     btncode1.setText("C-1");
                     btncode2.setText("C-2");
@@ -159,9 +176,35 @@ public class ParkingActivity extends AppCompatActivity {
 
     public void onParkingClick(View view)
     {
-        Intent intent=new Intent(this,VechileDetails.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        //String code = btncode1.getText().toString();
+        //Button buttonText = (Button) view;
+        Button b = (Button)view;
+        String buttonText = b.getText().toString();
+        System.out.println("Parking code: "+ buttonText);
+
+        //receive info booking from Booking activity
+        Intent intent = getIntent();
+        Date arrive = (Date)intent.getSerializableExtra("arrive");
+        int hours = intent.getIntExtra("hours",0);
+        float price = intent.getFloatExtra("price",0);
+
+        //add info parking in firebase
+        final Parking parking = new Parking(buttonText,arrive,hours,price);
+
+        String key = reference.push().getKey();
+        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                String message = "Parking Addded sucessfully";
+                Toast.makeText(ParkingActivity.this, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        Intent intent1=new Intent(this,VechileDetails.class);
+        intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent1);
         finish();
     }
 }
