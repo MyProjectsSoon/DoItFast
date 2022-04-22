@@ -176,8 +176,6 @@ public class ParkingActivity extends AppCompatActivity {
 
     public void onParkingClick(View view)
     {
-        //String code = btncode1.getText().toString();
-        //Button buttonText = (Button) view;
         Button b = (Button)view;
         String buttonText = b.getText().toString();
         System.out.println("Parking code: "+ buttonText);
@@ -204,6 +202,13 @@ public class ParkingActivity extends AppCompatActivity {
 
         Intent intent1=new Intent(this,VechileDetails.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        //send info Parking to vehicle activity
+        intent1.putExtra("parkingcode",buttonText);
+        intent1.putExtra("arrive",arrive);
+        intent1.putExtra("hours",hours);
+        intent1.putExtra("price",price);
+
         startActivity(intent1);
         finish();
     }

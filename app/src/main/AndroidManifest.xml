@@ -14,7 +14,9 @@
         android:theme="@style/Theme.DoItFast">
         <activity android:name=".InvoiceActivity"/>
         <activity android:name=".CardDetails" />
-        <activity android:name=".VechileDetails" />
+        <activity android:name=".VechileDetails" >
+
+        </activity>
         <activity android:name=".BookingActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

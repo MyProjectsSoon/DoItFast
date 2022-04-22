@@ -24,20 +24,7 @@ public class Parking {
         this.hours = hours;
         this.price = price;
     }
-//    public Parking(int parking_code, Date arrive, int hours, float price) {
-//        this.parking_code = parking_code;
-//        this.arrive = arrive;
-//        this.hours = hours;
-//        this.price = price;
-//    }
-//
-//    public int getParking_code() {
-//        return parking_code;
-//    }
-//
-//    public void setParking_code(int parking_code) {
-//        this.parking_code = parking_code;
-//    }
+
 
     public String getParking_code() {
         return parking_code;

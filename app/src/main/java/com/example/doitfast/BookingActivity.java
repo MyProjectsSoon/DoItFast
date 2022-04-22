@@ -36,12 +36,6 @@ public class BookingActivity extends AppCompatActivity {
     private ImageView ivCompany;
     private SwitchDateTimeDialogFragment dateTimeDialogFragment;
 
-//    //Reference to the Firebase realtime database
-//    private FirebaseDatabase database;
-//
-//    //Reference to a specific node in the database
-//    private DatabaseReference reference;
-
 
     //info parking
     private Date arrive;
@@ -59,11 +53,6 @@ public class BookingActivity extends AppCompatActivity {
         btnConfirm = findViewById(R.id.btnConfirm);
         radioGroup = findViewById(R.id.radioGroup);
         ivCompany = findViewById(R.id.ivCompany);
-
-//        //Get the database object and a reference to the members collection
-//        database = FirebaseDatabase.getInstance();
-//        reference = database.getReference("parking");
-
 
 
         //recieve intent
@@ -172,19 +161,6 @@ public class BookingActivity extends AppCompatActivity {
 
     public void onConfirmClick(View view)
     {
-//        final Parking parking = new Parking(arrive,hours,price);
-//
-//        String key = reference.push().getKey();
-//        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//
-//                String message = "Parking Addded sucessfully";
-//                Toast.makeText(BookingActivity.this, message, Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-
 
         Intent intent=new Intent(this,ParkingActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
