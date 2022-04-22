@@ -1,11 +1,9 @@
 package com.example.doitfast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,14 +11,16 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.doitfast.model.Parking;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 public class BookingActivity extends AppCompatActivity {
 
@@ -36,8 +36,17 @@ public class BookingActivity extends AppCompatActivity {
     private ImageView ivCompany;
     private SwitchDateTimeDialogFragment dateTimeDialogFragment;
 
+    //Reference to the Firebase realtime database
+    private FirebaseDatabase database;
+
+    //Reference to a specific node in the database
+    private DatabaseReference reference;
 
 
+    //info parking
+    private Date arrive;
+    private int hours;
+    private float price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +60,9 @@ public class BookingActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup);
         ivCompany = findViewById(R.id.ivCompany);
 
+        //Get the database object and a reference to the members collection
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("parking");
 
 
 
@@ -119,6 +131,7 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onPositiveButtonClick(Date date) {
                 btnTime.setText(myDateFormat.format(date));
+                arrive = date;
             }
 
             @Override
@@ -139,20 +152,39 @@ public class BookingActivity extends AppCompatActivity {
             case R.id.first:
                 if (checked)
                     System.out.println("1");
+                    hours = 1;
+                    price = 5;
                     break;
             case R.id.second:
                 if (checked)
                     System.out.println("2");
+                    hours = 2;
+                    price = 10;
                     break;
             case R.id.third:
                 if (checked)
                     System.out.println("3");
+                    hours = 3;
+                    price = 15;
                     break;
         }
     }
 
     public void onConfirmClick(View view)
     {
+        final Parking parking = new Parking(arrive,hours,price);
+
+        String key = reference.push().getKey();
+        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                String message = "Parking Addded sucessfully";
+                Toast.makeText(BookingActivity.this, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         Intent intent=new Intent(this,ParkingActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
