@@ -16,7 +16,13 @@
         <activity android:name=".CardDetails" />
         <activity android:name=".VechileDetails" />
         <activity android:name=".BookingActivity" />
-        <activity android:name=".ParkingActivity" />
+        <activity android:name=".ParkingActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SplitActivity" />
         <activity android:name=".items.ForgetPassword" />
         <activity android:name=".TicketActivity" />
@@ -28,11 +34,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

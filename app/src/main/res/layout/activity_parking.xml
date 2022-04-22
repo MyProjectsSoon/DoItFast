@@ -51,6 +51,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/radio_selector2"
             android:button="@android:color/transparent"
+            android:checked="true"
             android:elevation="4dp"
             android:fontFamily="@font/robotoregular"
             android:gravity="center"
@@ -133,7 +134,7 @@
         app:layout_constraintVertical_bias="0.20" />
 
     <Button
-        android:id="@+id/btnParking"
+        android:id="@+id/btnParking1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/light_blue"
@@ -161,7 +162,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnParking3"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/btnParking"
+        app:layout_constraintTop_toBottomOf="@+id/btnParking1"
         app:layout_constraintVertical_chainStyle="spread"
         app:layout_constraintWidth_percent=".15" />
 
