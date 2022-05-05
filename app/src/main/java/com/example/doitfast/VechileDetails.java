@@ -1,5 +1,6 @@
 package com.example.doitfast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,8 +12,16 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import java.util.Date;
+import com.example.doitfast.model.Invoice;
+import com.example.doitfast.model.Vehicle;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class VechileDetails extends AppCompatActivity {
 
@@ -29,6 +38,22 @@ public class VechileDetails extends AppCompatActivity {
     private String code;
     private String payment;
 
+    //Reference to the Firebase realtime database
+    private FirebaseDatabase database;
+
+    //Reference to a specific node in the database
+    private DatabaseReference reference;
+    private DatabaseReference reference1;
+
+    //Variable to count number of object in database
+    long maxid = 0;
+
+    //Variable to count number of object in database
+    long maxid1 = 0;
+
+    long count;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +63,49 @@ public class VechileDetails extends AppCompatActivity {
         spnCategory = findViewById(R.id.spnCategory);
         spnCode=findViewById(R.id.spnCode);
         etPlateNo=findViewById(R.id.etPlateNo);
+
+        //Get the database object and a reference to the members collection
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("vehicle");
+        reference1 = database.getReference("invoice");
+
+        //here step 1 count number of members in database and put it in variable maxid
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    maxid = (dataSnapshot.getChildrenCount());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //here step 1 count number of members in database and put it in variable maxid
+        reference1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    maxid1 = (dataSnapshot.getChildrenCount());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
 
         // Create an ArrayAdapter using the string array and a default spinner layout to get items
         ArrayAdapter<CharSequence> sourceAdapter = ArrayAdapter.createFromResource(this,
@@ -153,13 +221,54 @@ public class VechileDetails extends AppCompatActivity {
     {
         //receive info parking from parking activity
         Intent intent1 = getIntent();
-        String parking_code = intent1.getStringExtra("parkingcode");
-        Date arrive = (Date)intent1.getSerializableExtra("arrive");
-        int hours = intent1.getIntExtra("hours",0);
+        int userid = intent1.getIntExtra("Userid",-1);
+        String username = intent1.getStringExtra("UserName");
+        long parking_id = intent1.getLongExtra("parkingid",-1);
+        String parking_no = intent1.getStringExtra("parkingno");
         float price = intent1.getFloatExtra("price",0);
+        int hour = intent1.getIntExtra("hour",00);
+        int min = intent1.getIntExtra("min",00);
+        int day = intent1.getIntExtra("day",00);
+        int mon = intent1.getIntExtra("mon",00);
+        int year = intent1.getIntExtra("year",0000);
 
 
         plateNo = Integer.parseInt(etPlateNo.getText().toString());
+
+        //here step 2 to create object
+        final long id = maxid + 1;
+        //add info parking in firebase
+        final Vehicle vehicle = new Vehicle(plateNo,category,source,code,payment);
+
+        //String key = reference.push().getKey();
+        reference.child(String.valueOf(id)).setValue(vehicle).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                String message = "Vehicle Addded sucessfully";
+                Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        if(!payment.equals("credit card"))
+        {
+            //here step 2 to create object
+            final long id1 = maxid1 + 1;
+            //add info parking in firebase
+            final Invoice invoice = new Invoice(id1,userid,username,parking_id,id,-1);
+
+            //String key = reference.push().getKey();
+            reference1.child(String.valueOf(id1)).setValue(invoice).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                    String message = "invoice Addded sucessfully";
+                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
 
 
         Intent intent;
@@ -174,23 +283,81 @@ public class VechileDetails extends AppCompatActivity {
             intent = new Intent(this, InvoiceActivity.class);
         }
 
-        //send info parking to card or invoice activity
-        intent1.putExtra("parkingcode",parking_code);
-        intent1.putExtra("arrive",arrive);
-        intent1.putExtra("hours",hours);
-        intent1.putExtra("price",price);
+
 
         //send info vehicle to card or invoice activity
-        intent1.putExtra("plateno",plateNo);
-        intent1.putExtra("category",category);
-        intent1.putExtra("source",source);
-        intent1.putExtra("code",code);
-        intent1.putExtra("payment",payment);
+        intent.putExtra("Userid",userid);
+        intent.putExtra("UserName",username);
+        intent.putExtra("vehicleid",id);
+        intent.putExtra("vehicleno",plateNo);
+        intent.putExtra("vehiclesource",source);
+        intent.putExtra("parkingid",parking_id);
+        intent.putExtra("parkingno",parking_no);
+        intent.putExtra("price",price);
+        intent.putExtra("hour",hour);
+        intent.putExtra("min",min);
+        intent.putExtra("day", day);
+        intent.putExtra("mon", mon);
+        intent.putExtra("year", year);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
 
 
+    }
+
+    public long Count()
+    {
+        //here step 1 count number of members in database and put it in variable maxid
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    count = (dataSnapshot.getChildrenCount());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return count;
+    }
+    public void delete(View view)
+    {
+
+
+        long c = Count();
+
+        // 1 - get input
+        reference.child(String.valueOf(c)).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if(dataSnapshot.exists())
+                {
+                    reference.child(String.valueOf(count)).setValue(null); //Delete the Member
+                    String message = "Vehicle Deleted";
+                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String message = "No Vehicle Found";
+                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

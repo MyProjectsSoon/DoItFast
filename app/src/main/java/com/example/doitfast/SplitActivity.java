@@ -47,8 +47,10 @@ public class SplitActivity extends AppCompatActivity {
 
         //push username
         Intent intent2 = getIntent();
+        int userid = intent2.getIntExtra("id",-1);
         String username = intent2.getStringExtra("UserName");
         intent.putExtra("UserName", username);
+        intent.putExtra("Userid", userid);
 
         //push parking
         String parking = "parking";

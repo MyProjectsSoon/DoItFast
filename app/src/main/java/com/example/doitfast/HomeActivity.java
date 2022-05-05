@@ -42,7 +42,8 @@ public class HomeActivity extends AppCompatActivity {
     private String AEID = "Apply for an EID";
     private String RV = "Renew visa";
 
-
+    int userid;
+    String username;
 
 
     @Override
@@ -55,8 +56,9 @@ public class HomeActivity extends AppCompatActivity {
         userName = findViewById(R.id.txv_username);
         // receive from SignIn
         Intent intent = getIntent();
-        String email = intent.getStringExtra("UserEmail");
-        String username = intent.getStringExtra("UserName");
+        //String email = intent.getStringExtra("UserEmail");
+        username = intent.getStringExtra("UserName");
+        userid = intent.getIntExtra("Userid",-1);
         userName.setText(username);
 
 
@@ -95,7 +97,8 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("txt3", FP);
         intent.putExtra("txt4", AEID);
         intent.putExtra("txt5", RV);
-        intent.putExtra("UserName", intent.getStringExtra("UserName"));
+        intent.putExtra("UserName", username);
+        intent.putExtra("Userid", userid);
 
         //parking
         int image = R.drawable.faic;
@@ -136,13 +139,16 @@ public class HomeActivity extends AppCompatActivity {
     {
         Intent intent = IntentSplit();
 
+        intent.putExtra("UserName", intent.getStringExtra("UserName"));
+        intent.putExtra("Userid", intent.getStringExtra("userid"));
+
         intent.putExtra("message_key", MOI);
         intent.putExtra("txt1", TFP);
         intent.putExtra("txt2",IDL);
         intent.putExtra("txt3", IVR);
         intent.putExtra("txt4", RL);
         intent.putExtra("txt5", FCR);
-        intent.putExtra("UserName", intent.getStringExtra("UserName"));
+
 
         //parking
         int image = R.drawable.moi;

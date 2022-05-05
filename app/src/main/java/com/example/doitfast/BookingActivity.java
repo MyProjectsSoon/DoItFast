@@ -42,6 +42,9 @@ public class BookingActivity extends AppCompatActivity {
     private int hours;
     private float price;
 
+    int userid;
+    String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +58,13 @@ public class BookingActivity extends AppCompatActivity {
         ivCompany = findViewById(R.id.ivCompany);
 
 
-        //recieve intent
+        //recieve intent from home activity
         Intent intent = getIntent();
         String title = intent.getStringExtra("company title");
         String hours = intent.getStringExtra("working hours");
         int image = intent.getIntExtra("image",0);
+        userid = intent.getIntExtra("Userid",-1);
+        username = intent.getStringExtra("UserName");
 
         ivCompany.setImageResource(image);
         tvCompany.setText(title);
@@ -166,9 +171,17 @@ public class BookingActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //send info booking to parking activity
+        intent.putExtra("Userid",userid);
+        intent.putExtra("UserName",username);
         intent.putExtra("arrive",arrive);
         intent.putExtra("hours",hours);
         intent.putExtra("price",price);
+        intent.putExtra("hour",arrive.getHours());
+        intent.putExtra("min",arrive.getMinutes());
+        intent.putExtra("day",arrive.getDate());
+        intent.putExtra("mon",arrive.getMonth());
+        int year = 1900 + arrive.getYear() ;
+        intent.putExtra("year",year);
 
         startActivity(intent);
         finish();

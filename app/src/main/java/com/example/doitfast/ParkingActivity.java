@@ -1,5 +1,6 @@
 package com.example.doitfast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,8 +13,11 @@ import android.widget.Toast;
 
 import com.example.doitfast.model.Parking;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -29,6 +33,10 @@ public class ParkingActivity extends AppCompatActivity {
 
     //Reference to a specific node in the database
     private DatabaseReference reference;
+
+    //Variable to count number of object in database
+    long maxid = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,25 @@ public class ParkingActivity extends AppCompatActivity {
         btncode14 = findViewById(R.id.btnParking14);
         btncode15 = findViewById(R.id.btnParking15);
         btncode16 = findViewById(R.id.btnParking16);
+
+
+
+        //here step 1 count number of members in database and put it in variable maxid
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    maxid = (dataSnapshot.getChildrenCount());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -182,15 +209,24 @@ public class ParkingActivity extends AppCompatActivity {
 
         //receive info booking from Booking activity
         Intent intent = getIntent();
+        int userid = intent.getIntExtra("Userid",-1);
+        String username = intent.getStringExtra("UserName");
         Date arrive = (Date)intent.getSerializableExtra("arrive");
         int hours = intent.getIntExtra("hours",0);
         float price = intent.getFloatExtra("price",0);
+        int hour = intent.getIntExtra("hour",00);
+        int min = intent.getIntExtra("min",00);
+        int day = intent.getIntExtra("day",00);
+        int mon = intent.getIntExtra("mon",00);
+        int year = intent.getIntExtra("year",0000);
 
+        //here step 2 to create object
+        final long id = maxid + 1;
         //add info parking in firebase
         final Parking parking = new Parking(buttonText,arrive,hours,price);
 
-        String key = reference.push().getKey();
-        reference.child(key).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
+        //String key = reference.push().getKey();
+        reference.child(String.valueOf(id)).setValue(parking).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
 
@@ -204,10 +240,16 @@ public class ParkingActivity extends AppCompatActivity {
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //send info Parking to vehicle activity
-        intent1.putExtra("parkingcode",buttonText);
-        intent1.putExtra("arrive",arrive);
-        intent1.putExtra("hours",hours);
+        intent1.putExtra("Userid",userid);
+        intent1.putExtra("UserName",username);
+        intent1.putExtra("parkingid",id);
+        intent1.putExtra("parkingno",buttonText);
         intent1.putExtra("price",price);
+        intent1.putExtra("hour",hour);
+        intent1.putExtra("min",min);
+        intent1.putExtra("day", day);
+        intent1.putExtra("mon", mon);
+        intent1.putExtra("year", year);
 
         startActivity(intent1);
         finish();
