@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.doitfast.model.Parking;
@@ -27,6 +28,8 @@ public class ParkingActivity extends AppCompatActivity {
     private Button btncode5,btncode6,btncode7,btncode8;
     private Button btncode9,btncode10,btncode11,btncode12;
     private Button btncode13,btncode14,btncode15,btncode16;
+
+    private TextView capacity;
 
     //Reference to the Firebase realtime database
     private FirebaseDatabase database;
@@ -71,6 +74,7 @@ public class ParkingActivity extends AppCompatActivity {
         btncode16 = findViewById(R.id.btnParking16);
 
 
+        capacity = findViewById(R.id.tvCapacity);
 
         //here step 1 count number of members in database and put it in variable maxid
         reference.addValueEventListener(new ValueEventListener() {
@@ -79,6 +83,7 @@ public class ParkingActivity extends AppCompatActivity {
 
                 if (dataSnapshot.exists()) {
                     maxid = (dataSnapshot.getChildrenCount());
+                    capacity.setText(maxid + " / 48" );
                 }
 
             }
@@ -88,6 +93,8 @@ public class ParkingActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
