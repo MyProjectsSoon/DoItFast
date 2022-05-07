@@ -63,6 +63,8 @@ public class TicketActivity extends AppCompatActivity {
     //Intents
     private String title;
     private String username;
+    private Integer mins = 0;
+    private int average;
 
     //global variables
     private static int myCount;
@@ -103,7 +105,7 @@ public class TicketActivity extends AppCompatActivity {
         tvText.setVisibility(View.INVISIBLE);
         tvTicket.setVisibility(View.INVISIBLE);
         ivQR.setVisibility(View.INVISIBLE);
-        btnProcess.setVisibility(View.INVISIBLE);
+        //btnProcess.setVisibility(View.INVISIBLE);
 
         //Set title
         Intent intent = getIntent();
@@ -117,7 +119,7 @@ public class TicketActivity extends AppCompatActivity {
 
 
         //create ticket
-        t = new Ticket(0,username,title);
+        t = new Ticket(0,username,title,0);
 
 
 
@@ -127,7 +129,7 @@ public class TicketActivity extends AppCompatActivity {
                 //set text
                 tvTicket.setText(String.valueOf(queueCounter));
                 tvQueue.setText(String.valueOf(queueCounter));
-                tvMinutes.setText(String.valueOf(queueCounter));
+                tvMinutes.setText(String.valueOf(mins));
 
 
             }
@@ -153,15 +155,19 @@ public class TicketActivity extends AppCompatActivity {
                 title = intent.getStringExtra("message_key");
 
                 myCount=0;
-
+                mins =0;
+                int dbmin=0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String tick = snapshot.child("service").getValue().toString();
+                    dbmin=snapshot.child("minutes").getValue().hashCode();
                     if(title.equals(tick))
                     {
                         myCount++;
+                        mins+=dbmin;
                     }}
 
-                t.setQueue(myCount);
+
+                    t.setQueue(myCount);
 
 
                 callback.onDataReceived(myCount);
@@ -180,8 +186,9 @@ public class TicketActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent=new Intent(this,HomeActivity.class);
+                Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;

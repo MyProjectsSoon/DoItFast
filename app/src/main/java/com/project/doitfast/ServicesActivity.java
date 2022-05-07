@@ -93,8 +93,9 @@ public class ServicesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent=new Intent(this,HomeActivity.class);
+                Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;

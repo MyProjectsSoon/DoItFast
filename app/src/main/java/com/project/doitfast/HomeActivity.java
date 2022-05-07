@@ -77,6 +77,7 @@ public class HomeActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;

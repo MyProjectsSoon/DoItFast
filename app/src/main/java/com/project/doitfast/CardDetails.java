@@ -40,6 +40,8 @@ public class CardDetails extends AppCompatActivity {
     //Variable to count number of object in database
     long maxid1 = 0;
 
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,9 @@ public class CardDetails extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("card");
         reference1 = database.getReference("invoice");
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("UserName");
 
         //here step 1 count number of members in database and put it in variable maxid
         reference.addValueEventListener(new ValueEventListener() {
@@ -99,6 +104,7 @@ public class CardDetails extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;

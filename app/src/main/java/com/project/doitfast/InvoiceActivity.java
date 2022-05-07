@@ -3,10 +3,20 @@ package com.project.doitfast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.zxing.WriterException;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 
 public class InvoiceActivity extends AppCompatActivity {
 
@@ -18,6 +28,9 @@ public class InvoiceActivity extends AppCompatActivity {
     private TextView tvParkingNo; // parking //done
     private TextView tvAmount; //booking //done
     private ImageView ivQR; //generate
+
+    //QR Code
+    private Bitmap bitmap;
 
     String username;
     long card_id;
@@ -99,6 +112,45 @@ public class InvoiceActivity extends AppCompatActivity {
         }
         tvInvoicePlate.setText("Car Plate: " + sourceno + " - " + plateno);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        // QR Code
+        // below line is for getting
+        // the windowmanager service.
+        WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+        // initializing a variable for default display.
+        Display display = manager.getDefaultDisplay();
+
+        // creating a variable for point which
+        // is to be displayed in QR Code.
+        Point point = new Point();
+        display.getSize(point);
+
+        // getting width and
+        // height of a point
+        int width = point.x;
+        int height = point.y;
+
+        // generating dimension from width and height.
+        int dimen = width < height ? width : height;
+        dimen = dimen * 3 / 4;
+
+
+        // setting this dimensions inside our qr code
+        // encoder to generate our qr code.
+        QRGEncoder qrgEncoder = new QRGEncoder(String.valueOf(parking_id), null, QRGContents.Type.TEXT, dimen);
+        try {
+            // getting our qrcode in the form of bitmap.
+            bitmap = qrgEncoder.encodeAsBitmap();
+            // the bitmap is set inside our image
+            // view using .setimagebitmap method.
+            ivQR.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            // this method is called for
+            // exception handling.
+            Log.e("Tag", e.toString());
+        }
     }
 
     //back button
@@ -108,6 +160,7 @@ public class InvoiceActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                username = intent.getStringExtra("UserName");
                 startActivity(intent);
                 finish();
                 return true;

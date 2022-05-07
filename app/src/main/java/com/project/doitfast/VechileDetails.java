@@ -53,6 +53,8 @@ public class VechileDetails extends AppCompatActivity {
 
     long count;
 
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,9 @@ public class VechileDetails extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("vehicle");
         reference1 = database.getReference("invoice");
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("UserName");
 
         //here step 1 count number of members in database and put it in variable maxid
         reference.addValueEventListener(new ValueEventListener() {
@@ -179,6 +184,7 @@ public class VechileDetails extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;
@@ -222,7 +228,6 @@ public class VechileDetails extends AppCompatActivity {
         //receive info parking from parking activity
         Intent intent1 = getIntent();
         int userid = intent1.getIntExtra("Userid",-1);
-        String username = intent1.getStringExtra("UserName");
         long parking_id = intent1.getLongExtra("parkingid",-1);
         String parking_no = intent1.getStringExtra("parkingno");
         float price = intent1.getFloatExtra("price",0);
@@ -307,57 +312,5 @@ public class VechileDetails extends AppCompatActivity {
 
     }
 
-    public long Count()
-    {
-        //here step 1 count number of members in database and put it in variable maxid
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.exists()) {
-                    count = (dataSnapshot.getChildrenCount());
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        return count;
-    }
-    public void delete(View view)
-    {
-
-
-        long c = Count();
-
-        // 1 - get input
-        reference.child(String.valueOf(c)).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if(dataSnapshot.exists())
-                {
-                    reference.child(String.valueOf(count)).setValue(null); //Delete the Member
-                    String message = "Vehicle Deleted";
-                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    String message = "No Vehicle Found";
-                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }

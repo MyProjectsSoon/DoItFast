@@ -40,6 +40,8 @@ public class ParkingActivity extends AppCompatActivity {
     //Variable to count number of object in database
     long maxid = 0;
 
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,9 @@ public class ParkingActivity extends AppCompatActivity {
 
         capacity = findViewById(R.id.tvCapacity);
 
+        Intent intent = getIntent();
+        username = intent.getStringExtra("UserName");
+
         //here step 1 count number of members in database and put it in variable maxid
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,6 +114,7 @@ public class ParkingActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent=new Intent(this,SplitActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("UserName",username);
                 startActivity(intent);
                 finish();
                 return true;
