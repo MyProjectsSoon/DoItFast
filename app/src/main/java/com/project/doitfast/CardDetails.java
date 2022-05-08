@@ -132,8 +132,7 @@ public class CardDetails extends AppCompatActivity {
         int year = intent1.getIntExtra("year",0000);
 
         //get user input
-        String cardn = etCardNo.getText().toString().trim();
-        int cardNo = Integer.valueOf(cardn);
+        long cardNo = Long.valueOf(etCardNo.getText().toString());
         String cardName = etCardName.getText().toString();
         String exp = etCardExpiration.getText().toString();
         int cvc = Integer.parseInt(etCardCVC.getText().toString());

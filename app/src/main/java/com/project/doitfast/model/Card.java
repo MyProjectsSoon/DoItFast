@@ -2,7 +2,7 @@ package com.project.doitfast.model;
 
 public class Card {
 
-    private int card_num;
+    private long card_num;
     private String full_name;
     private String exp;
     private int cvc;
@@ -10,18 +10,18 @@ public class Card {
     public Card() {
     }
 
-    public Card(int card_num, String full_name, String exp, int cvc) {
+    public Card(long card_num, String full_name, String exp, int cvc) {
         this.card_num = card_num;
         this.full_name = full_name;
         this.exp = exp;
         this.cvc = cvc;
     }
 
-    public int getCard_num() {
+    public long getCard_num() {
         return card_num;
     }
 
-    public void setCard_num(int card_num) {
+    public void setCard_num(long card_num) {
         this.card_num = card_num;
     }
 
