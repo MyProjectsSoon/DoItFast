@@ -14,7 +14,7 @@
         android:theme="@style/Theme.DoItFast">
         <activity android:name="com.project.doitfast.InvoiceActivity"/>
         <activity android:name="com.project.doitfast.CardDetails" />
-        <activity android:name="com.project.doitfast.VechileDetails" >
+        <activity android:name="com.project.doitfast.VehicleDetails" >
 
         </activity>
         <activity android:name="com.project.doitfast.BookingActivity" >

@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class VechileDetails extends AppCompatActivity {
+public class VehicleDetails extends AppCompatActivity {
 
     private EditText etPlateNo;
     private Spinner spnSource;
@@ -59,7 +59,7 @@ public class VechileDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vechile_details);
+        setContentView(R.layout.activity_vehicle_details);
 
         spnSource = findViewById(R.id.spnSource);
         spnCategory = findViewById(R.id.spnCategory);
@@ -251,7 +251,7 @@ public class VechileDetails extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
 
                 String message = "Vehicle Addded sucessfully";
-                Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(VehicleDetails.this, message, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -269,7 +269,7 @@ public class VechileDetails extends AppCompatActivity {
                 public void onSuccess(Void aVoid) {
 
                     String message = "invoice Addded sucessfully";
-                    Toast.makeText(VechileDetails.this, message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VehicleDetails.this, message, Toast.LENGTH_SHORT).show();
 
                 }
             });

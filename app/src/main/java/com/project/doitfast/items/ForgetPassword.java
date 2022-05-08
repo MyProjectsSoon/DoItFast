@@ -16,6 +16,7 @@ import com.project.doitfast.SignUpActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.project.doitfast.WelcomeActivity;
 
 public class ForgetPassword extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class ForgetPassword extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent=new Intent(this, HomeActivity.class);
+                Intent intent=new Intent(this, WelcomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();

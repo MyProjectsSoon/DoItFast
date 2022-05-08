@@ -249,7 +249,7 @@ public class ParkingActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent1=new Intent(this,VechileDetails.class);
+        Intent intent1=new Intent(this, VehicleDetails.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //send info Parking to vehicle activity
